@@ -6,5 +6,9 @@
   },
   "editor.quickSuggestions": {
     "strings": true
-  }
+  },
+  "javascript.preferences.quoteStyle": "single",
+  "editor.formatOnSave": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true
 }
