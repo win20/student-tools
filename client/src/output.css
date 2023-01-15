@@ -561,6 +561,14 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.invisible{
+  visibility: hidden;
+}
+
+.static{
+  position: static;
+}
+
 .absolute{
   position: absolute;
 }
@@ -631,6 +639,10 @@ video {
   height: 1.25rem;
 }
 
+.h-48{
+  height: 12rem;
+}
+
 .w-8{
   width: 2rem;
 }
@@ -647,6 +659,14 @@ video {
   width: 2.5rem;
 }
 
+.w-48{
+  width: 12rem;
+}
+
+.w-0{
+  width: 0px;
+}
+
 .grid-flow-row{
   grid-auto-flow: row;
 }
@@ -655,12 +675,24 @@ video {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.grid-cols-5{
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
 .flex-col{
   flex-direction: column;
 }
 
+.flex-wrap{
+  flex-wrap: wrap;
+}
+
 .items-center{
   align-items: center;
+}
+
+.justify-center{
+  justify-content: center;
 }
 
 .justify-between{
@@ -669,6 +701,18 @@ video {
 
 .gap-2{
   gap: 0.5rem;
+}
+
+.overflow-auto{
+  overflow: auto;
+}
+
+.overflow-hidden{
+  overflow: hidden;
+}
+
+.overflow-clip{
+  overflow: clip;
 }
 
 .rounded-full{
@@ -760,6 +804,10 @@ video {
   text-align: center;
 }
 
+.align-middle{
+  vertical-align: middle;
+}
+
 .font-nunito{
   font-family: nunito, sans-serif;
 }
@@ -779,6 +827,11 @@ video {
   line-height: 2.25rem;
 }
 
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .font-extrabold{
   font-weight: 800;
 }
@@ -795,6 +848,11 @@ video {
 .text-gray-600{
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.text-gray-500{
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
 .shadow-md{
@@ -822,6 +880,11 @@ video {
   -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
           transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   cursor: pointer;
+}
+
+.hover\:bg-secondaryHighlight:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(84 136 168 / var(--tw-bg-opacity));
 }
 
 .focus\:outline-none:focus{
@@ -915,6 +978,10 @@ video {
 }
 
 @media (min-width: 1024px){
+  .lg\:flex{
+    display: flex;
+  }
+
   .lg\:grid{
     display: grid;
   }

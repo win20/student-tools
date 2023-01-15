@@ -1,8 +1,11 @@
 import { toolsArray } from '../../utils/tools';
 
 const ToolCard = (props: Object) => {
-	const renderTools = toolsArray.map((tool: any) => (
-		<div className="py-5 md:border-1 md:p-5 md:my-5 md:rounded-md md:border-opacity-50">
+	const renderTools = toolsArray.map((tool: any, i: any) => (
+		<div
+			key={i}
+			className="py-5 md:border-1 md:p-5 md:my-5 md:rounded-md md:border-opacity-50"
+		>
 			<div className="flex items-center justify-between md:relative">
 				<p className="text-xl">{tool.title}</p>
 
@@ -13,9 +16,9 @@ const ToolCard = (props: Object) => {
 					className="w-8 h-8 md:w-11 md:h-11 md:absolute md:right-0 md:top-1"
 				>
 					<path
-						fill-rule="evenodd"
+						fillRule="evenodd"
 						d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-						clip-rule="evenodd"
+						clipRule="evenodd"
 					/>
 				</svg>
 			</div>

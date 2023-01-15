@@ -17,7 +17,7 @@ class Tool {
 	}
 }
 
-const categories: string[] = ['Maths', 'Physics', 'Life & Finance', 'Health'];
+const categories: string[] = ['Maths', 'Physics', 'Life and Finance', 'Health'];
 
 //prettier-ignore
 const toolsArray: Array<Tool> = [
