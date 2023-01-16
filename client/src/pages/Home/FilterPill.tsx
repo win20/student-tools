@@ -10,14 +10,15 @@ const FilterPill = () => {
 				elements.forEach((item) => {
 					item.classList.add('hidden');
 				});
-			}
-		});
 
-		const itemsToShow = document.querySelectorAll(
-			`.${Helpers.stripAllSpaces(filter)}`
-		);
-		itemsToShow.forEach((item) => {
-			item.classList.remove('hidden');
+				const filterBtn = document.querySelector(
+					`#${Helpers.stripAllSpaces(item)}`
+				);
+				filterBtn!.classList.replace('bg-primary', 'bg-secondary');
+
+				const allBtn = document.querySelector('#All');
+				allBtn!.classList.replace('bg-primary', 'bg-secondary');
+			}
 		});
 
 		if (filter === 'All') {
@@ -30,7 +31,19 @@ const FilterPill = () => {
 					item.classList.remove('hidden');
 				});
 			});
+		} else {
+			const itemsToShow = document.querySelectorAll(
+				`.${Helpers.stripAllSpaces(filter)}`
+			);
+			itemsToShow.forEach((item) => {
+				item.classList.remove('hidden');
+			});
 		}
+
+		const filterBtn = document.querySelector(
+			`#${Helpers.stripAllSpaces(filter)}`
+		);
+		filterBtn!.classList.replace('bg-secondary', 'bg-primary');
 	};
 
 	const filters = ['All', 'Maths', 'Physics', 'Life and Finance', 'Health'];
@@ -38,6 +51,7 @@ const FilterPill = () => {
 	const filterButtons = filters.map((filter, i: any) => (
 		<button
 			key={i}
+			id={Helpers.stripAllSpaces(filter)}
 			className="mr-2 my-1 bg-secondary px-4 py-1 rounded-full hover:bg-secondaryHighlight"
 			onClick={(e) => setFilter(filter)}
 		>

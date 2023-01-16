@@ -561,10 +561,6 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.invisible{
-  visibility: hidden;
-}
-
 .static{
   position: static;
 }
@@ -655,16 +651,12 @@ video {
   width: 1.25rem;
 }
 
-.w-10{
-  width: 2.5rem;
-}
-
 .w-48{
   width: 12rem;
 }
 
-.w-0{
-  width: 0px;
+.w-10{
+  width: 2.5rem;
 }
 
 .grid-flow-row{
@@ -673,10 +665,6 @@ video {
 
 .grid-cols-4{
   grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.grid-cols-5{
-  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .flex-col{
@@ -697,22 +685,6 @@ video {
 
 .justify-between{
   justify-content: space-between;
-}
-
-.gap-2{
-  gap: 0.5rem;
-}
-
-.overflow-auto{
-  overflow: auto;
-}
-
-.overflow-hidden{
-  overflow: hidden;
-}
-
-.overflow-clip{
-  overflow: clip;
 }
 
 .rounded-full{
@@ -804,10 +776,6 @@ video {
   text-align: center;
 }
 
-.align-middle{
-  vertical-align: middle;
-}
-
 .font-nunito{
   font-family: nunito, sans-serif;
 }
@@ -882,14 +850,34 @@ video {
   cursor: pointer;
 }
 
+.after\:bg-primary::after{
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 53 87 / var(--tw-bg-opacity));
+}
+
+.visited\:bg-primary:visited{
+  background-color: rgb(29 53 87 );
+}
+
 .hover\:bg-secondaryHighlight:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(84 136 168 / var(--tw-bg-opacity));
 }
 
+.focus\:bg-primary:focus{
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 53 87 / var(--tw-bg-opacity));
+}
+
 .focus\:outline-none:focus{
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.active\:bg-primary:active{
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 53 87 / var(--tw-bg-opacity));
 }
 
 @media (min-width: 768px){

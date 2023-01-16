@@ -5,7 +5,6 @@ const ToolCardSquare = () => {
 	const renderTools = toolsArray.map((tool: any, i: any) => (
 		<div key={i}>
 			<div
-				id={Helpers.stripAllSpaces(tool.category)}
 				className={`border-1 text-center m-2 p-5 rounded-lg shadow-md flex flex-col items-center square-card-hover justify-center h-48 w-48 ${Helpers.stripAllSpaces(
 					tool.category
 				)}`}
