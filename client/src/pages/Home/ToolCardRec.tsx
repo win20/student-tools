@@ -1,10 +1,13 @@
+import { Helpers } from '../../utils/helpers';
 import { toolsArray } from '../../utils/tools';
 
 const ToolCard = (props: Object) => {
 	const renderTools = toolsArray.map((tool: any, i: any) => (
 		<div
 			key={i}
-			className="py-5 md:border-1 md:p-5 md:my-5 md:rounded-md md:border-opacity-50"
+			className={`py-5 md:border-1 md:p-5 md:my-5 md:rounded-md md:border-opacity-50 ${Helpers.stripAllSpaces(
+				tool.category
+			)}`}
 		>
 			<div className="flex items-center justify-between md:relative">
 				<p className="text-xl">{tool.title}</p>
