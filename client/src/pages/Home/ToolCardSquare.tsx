@@ -1,16 +1,10 @@
 import { Helpers } from '../../utils/helpers';
-import { useContext } from 'react';
-import { UserContext } from './ToolsContext';
 import { toolsArray } from '../../utils/tools';
 import { Tool } from '../../utils/tools';
 
-const ToolCardSquare = (props: any) => {
-	const queryContext = useContext(UserContext);
-
+const ToolCardSquare = ({ searchQuery }: any) => {
 	const filterTools = (tool: Tool) => {
-		return tool.title
-			.toLocaleLowerCase()
-			.includes(queryContext.query.toLowerCase());
+		return tool.title.toLocaleLowerCase().includes(searchQuery.toLowerCase());
 	};
 
 	const filteredTools = toolsArray.filter(filterTools);

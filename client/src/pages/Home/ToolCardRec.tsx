@@ -1,8 +1,15 @@
 import { Helpers } from '../../utils/helpers';
 import { toolsArray } from '../../utils/tools';
+import { Tool } from '../../utils/tools';
 
-const ToolCard = (props: any) => {
-	const renderTools = toolsArray.map((tool: any, i: any) => (
+const ToolCard = ({ searchQuery }: any) => {
+	const filterTools = (tool: Tool) => {
+		return tool.title.toLocaleLowerCase().includes(searchQuery.toLowerCase());
+	};
+
+	const filteredTools = toolsArray.filter(filterTools);
+
+	const renderTools = filteredTools.map((tool: any, i: any) => (
 		<div
 			key={i}
 			className={`py-5 md:border-1 md:p-5 md:my-5 md:rounded-md md:border-opacity-50 ${Helpers.stripAllSpaces(

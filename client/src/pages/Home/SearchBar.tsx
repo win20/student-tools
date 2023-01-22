@@ -1,11 +1,6 @@
-import { useContext, useState } from 'react';
-import { UserContext } from './ToolsContext';
-
-const SearchBar = (props: any) => {
-	const { query, setQuery } = useContext(UserContext);
-
+const SearchBar = ({ onSearch }: any) => {
 	const handleSearch = (e: any) => {
-		setQuery(e.target.value);
+		onSearch(e.target.value);
 	};
 
 	return (
