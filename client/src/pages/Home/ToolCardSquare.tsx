@@ -1,8 +1,21 @@
-import { toolsArray } from '../../utils/tools';
 import { Helpers } from '../../utils/helpers';
+import { useContext } from 'react';
+import { UserContext } from './ToolsContext';
+import { toolsArray } from '../../utils/tools';
+import { Tool } from '../../utils/tools';
 
-const ToolCardSquare = () => {
-	const renderTools = toolsArray.map((tool: any, i: any) => (
+const ToolCardSquare = (props: any) => {
+	const queryContext = useContext(UserContext);
+
+	const filterTools = (tool: Tool) => {
+		return tool.title
+			.toLocaleLowerCase()
+			.includes(queryContext.query.toLowerCase());
+	};
+
+	const filteredTools = toolsArray.filter(filterTools);
+
+	const renderTools = filteredTools.map((tool: Tool, i: number) => (
 		<div key={i}>
 			<div
 				className={`border-1 text-center m-2 p-5 rounded-lg shadow-md flex flex-col items-center square-card-hover justify-center h-48 w-48 ${Helpers.stripAllSpaces(
@@ -20,15 +33,7 @@ const ToolCardSquare = () => {
 		</div>
 	));
 
-	renderTools.forEach((tool: any) => {});
-
-	return (
-		// <div className="hidden lg:grid grid-flow-row grid-cols-4">
-		// 	{renderTools}
-		// </div>
-
-		<div className="hidden lg:flex flex-wrap">{renderTools}</div>
-	);
+	return <div className="hidden lg:flex flex-wrap">{renderTools}</div>;
 };
 
 export default ToolCardSquare;

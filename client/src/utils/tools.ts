@@ -38,4 +38,4 @@ const toolsArray: Array<Tool> = [
 	new Tool('Calories burned', 'description1', categories[3], 'caloriesburned'),
 ];
 
-export { toolsArray };
+export { toolsArray, Tool };

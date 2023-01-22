@@ -1,4 +1,13 @@
-const SearchBar = () => {
+import { useContext, useState } from 'react';
+import { UserContext } from './ToolsContext';
+
+const SearchBar = (props: any) => {
+	const { query, setQuery } = useContext(UserContext);
+
+	const handleSearch = (e: any) => {
+		setQuery(e.target.value);
+	};
+
 	return (
 		<div id="SearchBar">
 			<span className="relative mx-auto text-gray-600">
@@ -7,6 +16,7 @@ const SearchBar = () => {
 					type="search"
 					name="search"
 					placeholder="Search..."
+					onChange={handleSearch}
 				/>
 				<button type="submit" className="absolute right-4 top-0">
 					<svg

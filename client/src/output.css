@@ -850,34 +850,14 @@ video {
   cursor: pointer;
 }
 
-.after\:bg-primary::after{
-  content: var(--tw-content);
-  --tw-bg-opacity: 1;
-  background-color: rgb(29 53 87 / var(--tw-bg-opacity));
-}
-
-.visited\:bg-primary:visited{
-  background-color: rgb(29 53 87 );
-}
-
 .hover\:bg-secondaryHighlight:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(84 136 168 / var(--tw-bg-opacity));
 }
 
-.focus\:bg-primary:focus{
-  --tw-bg-opacity: 1;
-  background-color: rgb(29 53 87 / var(--tw-bg-opacity));
-}
-
 .focus\:outline-none:focus{
   outline: 2px solid transparent;
   outline-offset: 2px;
-}
-
-.active\:bg-primary:active{
-  --tw-bg-opacity: 1;
-  background-color: rgb(29 53 87 / var(--tw-bg-opacity));
 }
 
 @media (min-width: 768px){

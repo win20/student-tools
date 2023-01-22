@@ -1,7 +1,7 @@
 import { Helpers } from '../../utils/helpers';
 import { toolsArray } from '../../utils/tools';
 
-const ToolCard = (props: Object) => {
+const ToolCard = (props: any) => {
 	const renderTools = toolsArray.map((tool: any, i: any) => (
 		<div
 			key={i}
