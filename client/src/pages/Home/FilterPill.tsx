@@ -54,16 +54,18 @@ const FilterPill = () => {
 		'Health',
 	];
 
-	const filterButtons: JSX.Element[] = filters.map((filter, i: any) => (
-		<button
-			key={i}
-			id={Helpers.stripAllSpaces(filter)}
-			className="mr-2 my-1 bg-secondary px-4 py-1 rounded-full hover:bg-secondaryHighlight"
-			onClick={(e) => setFilter(filter)}
-		>
-			<p className="text-lightText">{filter}</p>
-		</button>
-	));
+	const filterButtons: JSX.Element[] = filters.map(
+		(filter: string, i: number) => (
+			<button
+				key={i}
+				id={Helpers.stripAllSpaces(filter)}
+				className="mr-2 my-1 bg-secondary px-4 py-1 rounded-full hover:bg-secondaryHighlight"
+				onClick={(e) => setFilter(filter)}
+			>
+				<p className="text-lightText">{filter}</p>
+			</button>
+		)
+	);
 
 	return <div id="FilterPill">{filterButtons}</div>;
 };
