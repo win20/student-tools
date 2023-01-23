@@ -1,6 +1,12 @@
-const SearchBar = ({ onSearch }: any) => {
-	const handleSearch = (e: any) => {
-		onSearch(e.target.value);
+import { Dispatch, SetStateAction, ChangeEvent } from 'react';
+
+const SearchBar = ({
+	setSearchQuery,
+}: {
+	setSearchQuery: Dispatch<SetStateAction<string>>;
+}) => {
+	const handleSearch = (e: ChangeEvent<HTMLInputElement>): void => {
+		setSearchQuery(e.target.value);
 	};
 
 	return (

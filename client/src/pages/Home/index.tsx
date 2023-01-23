@@ -6,7 +6,7 @@ import ToolCardSquare from './ToolCardSquare';
 import { useState } from 'react';
 
 const Home = () => {
-	const [searchQuery, setSearchQuery] = useState('');
+	const [searchQuery, setSearchQuery] = useState<string>('');
 
 	return (
 		<div id="Home">
@@ -17,7 +17,7 @@ const Home = () => {
 				</h2>
 
 				<div className="md:flex justify-between mb-2">
-					<SearchBar onSearch={setSearchQuery} />
+					<SearchBar setSearchQuery={setSearchQuery} />
 					<FilterPill />
 				</div>
 
