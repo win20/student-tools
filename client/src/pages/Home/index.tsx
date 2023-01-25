@@ -1,4 +1,4 @@
-import NavBar from '../../shared/NavBar';
+import NavBar from '../../shared/Header';
 import SearchBar from './SearchBar';
 import FilterPill from './FilterPill';
 import ToolCardRec from './ToolCardRec';

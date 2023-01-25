@@ -1,4 +1,8 @@
+import { useParams } from 'react-router-dom';
+
 const NavBar = () => {
+	const { toolid } = useParams();
+
 	return (
 		<div
 			id="NavBar"
@@ -41,11 +45,19 @@ const NavBar = () => {
 				</a>
 			</div>
 
-			<h1 className="text-3xl text-center font-extrabold md:text-4xl lg:text-5xl">
+			{/* <h1 className="text-3xl text-center font-extrabold md:text-4xl lg:text-5xl">
 				All the tools to help students
 				<br />
 				through university
-			</h1>
+			</h1> */}
+
+			{!toolid && (
+				<h1 className="text-3xl text-center font-extrabold md:text-4xl lg:text-5xl">
+					All the tools to help students
+					<br />
+					through university
+				</h1>
+			)}
 		</div>
 	);
 };
