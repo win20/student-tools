@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
-import PercentageIndex from './Percentage/PercentageIndex';
-import QuadraticFormulaIndex from './QuadraticFormula/QuadraticFormulaindex';
+import Percentage from './Percentage/Percentage';
+import Quadratic from './QuadraticFormula/QuadraticFormula';
 import Header from 'shared/Header';
 
 const ToolsLoader = () => {
 	const { toolid } = useParams();
 
-	const views = [<PercentageIndex />, <QuadraticFormulaIndex />];
+	const views = [<Percentage />, <Quadratic />];
 
 	return (
 		<div>

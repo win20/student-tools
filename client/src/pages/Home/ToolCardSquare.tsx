@@ -32,7 +32,11 @@ const ToolCardSquare = ({ searchQuery }: { searchQuery: string }) => {
 		)
 	);
 
-	return <div className="hidden lg:flex flex-wrap">{renderTools}</div>;
+	return (
+		<div className="hidden desktop:flex flex-wrap justify-center">
+			{renderTools}
+		</div>
+	);
 };
 
 export default ToolCardSquare;

@@ -43,7 +43,7 @@ const ToolCard = ({ searchQuery }: { searchQuery: string }) => {
 	return (
 		<div
 			id="ToolCard"
-			className="border-1 border-gray-100 rounded-md md:border-none lg:hidden"
+			className="border-1 border-gray-100 rounded-md md:border-none desktop:hidden"
 		>
 			<div id="toolCardInner" className="p-3 md:p-0">
 				{renderTools}

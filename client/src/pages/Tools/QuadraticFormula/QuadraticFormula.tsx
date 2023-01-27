@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-const QuadraticFormulaIndex = () => {
+const QuadraticFormula = () => {
 	const { toolid } = useParams();
 
 	return (
@@ -11,4 +11,4 @@ const QuadraticFormulaIndex = () => {
 	);
 };
 
-export default QuadraticFormulaIndex;
+export default QuadraticFormula;

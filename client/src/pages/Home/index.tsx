@@ -11,8 +11,8 @@ const Home = () => {
 	return (
 		<div id="Home">
 			<NavBar />
-			<div id="homeContent" className="p-5 md:p-10 lg:px-96">
-				<h2 className="text-3xl font-semibold mb-5">
+			<div id="homeContent" className="p-5 md:p-10 desktop:px-96">
+				<h2 className="text-2xl font-semibold mb-5 desktop:text-3xl">
 					Calculators and Formulas
 				</h2>
 
