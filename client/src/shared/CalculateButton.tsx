@@ -5,18 +5,19 @@ interface propsInterface {
 
 const CalculateButton = (props: propsInterface) => {
 	return (
-		<span className="ml-10 rounded-full text-lightText">
+		<span id="calculate-button" className="rounded-full text-lightText flex">
 			<button
-				className="px-4 py-2 rounded-l-full bg-secondary hover:bg-secondaryHighlight"
+				id={`${props.id}-btn`}
+				className="px-4 w-22 h-8 py-2 rounded-l-full bg-secondary hover:bg-secondaryHighlight md:w-24 md:h-10"
 				onClick={props.function}
 			>
-				Calculate
+				<p className="text-sm md:text-base">Calculate</p>
 			</button>
 			<input
 				id={props.id}
 				type="text"
 				disabled
-				className="py-2 w-24 rounded-r-full bg-slate-100 text-black pl-2"
+				className="py-2 w-20 h-8 rounded-r-full bg-slate-100 text-black pl-2 md:w-24 md:h-10"
 			/>
 		</span>
 	);
