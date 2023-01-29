@@ -2,9 +2,24 @@ import ToolCalculators from 'utils/toolCalculators';
 import CalculateButton from 'shared/CalculateButton';
 import { Helpers } from 'utils/helpers';
 import { useEffect, useState } from 'react';
+import SuggestedTools from 'shared/SuggestedTools';
+import { Tool, toolsArray } from 'utils/tools';
 
 const Percentage = () => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+	function getToolsToSuggest() {
+		let tools: Tool[] = [];
+		toolsArray.forEach((tool: Tool) => {
+			if (tool.title.toLowerCase().includes('percentage')) {
+				tools.push(tool);
+			}
+		});
+
+		return tools;
+	}
+
+	let toolsToSuggest: Tool[] = getToolsToSuggest();
 
 	useEffect(() => {
 		const handleWindowResize = () => {
@@ -151,6 +166,8 @@ const Percentage = () => {
 					</div>
 				</div>
 			</div>
+
+			<SuggestedTools toolsArray={toolsToSuggest} />
 		</div>
 	);
 };
