@@ -1,7 +1,7 @@
 import ToolCalculators from 'utils/toolCalculators';
 import CalculateButton from 'shared/CalculateButton';
 import { Helpers } from 'utils/helpers';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Percentage = () => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);

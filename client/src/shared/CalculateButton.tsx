@@ -1,9 +1,9 @@
-interface propsInterface {
+type propsType = {
 	id: string;
 	function: () => void;
-}
+};
 
-const CalculateButton = (props: propsInterface) => {
+const CalculateButton = (props: propsType) => {
 	return (
 		<span id="calculate-button" className="rounded-full text-lightText flex">
 			<button
