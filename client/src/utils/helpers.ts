@@ -1,6 +1,6 @@
 class Helpers {
-	static stripAllSpaces(inputStr: string): string {
-		return inputStr.replace(/\s/g, '');
+	static stripAllSpaces(input: string): string {
+		return input.replace(/\s/g, '');
 	}
 
 	static animateOnEvent(
@@ -12,6 +12,12 @@ class Helpers {
 		setTimeout(() => {
 			element.classList.remove(animation);
 		}, timeoutInMs);
+	}
+
+	static urlCleaner(input: string): string {
+		const lowerCase = input.toLowerCase();
+		const cleanUrl = lowerCase.replace(/ /g, '-');
+		return cleanUrl;
 	}
 }
 
