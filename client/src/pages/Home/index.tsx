@@ -2,7 +2,7 @@ import NavBar from '../../shared/Header';
 import SearchBar from './SearchBar';
 import FilterPill from './FilterPill';
 import ToolCardRec from './ToolCardRec';
-import ToolCardSquare from './SquareToolCards';
+import ToolCardSquare from './ToolCardSquare';
 import { useState } from 'react';
 
 const Home = () => {

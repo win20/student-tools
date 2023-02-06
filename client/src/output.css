@@ -604,10 +604,6 @@ video {
   margin-bottom: 2rem;
 }
 
-.mt-10{
-  margin-top: 2.5rem;
-}
-
 .mr-2{
   margin-right: 0.5rem;
 }
@@ -630,6 +626,10 @@ video {
 
 .mt-2{
   margin-top: 0.5rem;
+}
+
+.mt-10{
+  margin-top: 2.5rem;
 }
 
 .flex{
@@ -735,6 +735,10 @@ video {
 
 .resize{
   resize: both;
+}
+
+.flex-row{
+  flex-direction: row;
 }
 
 .flex-col{
@@ -898,12 +902,12 @@ video {
   font-weight: 800;
 }
 
-.font-bold{
-  font-weight: 700;
-}
-
 .font-semibold{
   font-weight: 600;
+}
+
+.font-bold{
+  font-weight: 700;
 }
 
 .text-lightText{
