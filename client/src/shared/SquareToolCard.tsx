@@ -13,7 +13,7 @@ const SquareToolCard = (props: propsType) => {
 			)}`}
 		>
 			<img
-				src={require('../../public/icons/' + props.tool.iconName + '.png')}
+				src={'/icons/' + props.tool.iconName + '.png'}
 				alt={props.tool.title}
 				className="w-10 pb-4"
 			/>
