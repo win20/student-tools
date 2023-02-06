@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { toolsArray } from '../../utils/tools';
 import { Tool } from '../../utils/tools';
 import SquareToolCard from 'shared/SquareToolCard';
+import { Helpers } from 'utils/helpers';
 
 const ToolCardSquare = ({ searchQuery }: { searchQuery: string }) => {
 	const filterTools = (tool: Tool): boolean => {
@@ -13,7 +14,7 @@ const ToolCardSquare = ({ searchQuery }: { searchQuery: string }) => {
 	const renderTools: JSX.Element[] = filteredTools.map(
 		(tool: Tool, i: number) => (
 			<div key={i}>
-				<Link to={`/tools/${i}`}>
+				<Link to={`/tools/${Helpers.urlCleaner(tool.title)}`}>
 					<SquareToolCard tool={tool} />
 				</Link>
 			</div>
