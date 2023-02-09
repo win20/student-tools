@@ -1,11 +1,10 @@
 import Percentage from 'pages/Tools/Percentage/Percentage';
 import Quadratic from 'pages/Tools/QuadraticFormula/QuadraticFormula';
-import { toolsArray } from './tools';
-import { Tool } from './tools';
+import { toolsArray, Tool } from './tools';
 import { Helpers } from './helpers';
 
 const setToolTitles = (): string[] => {
-	let titles: string[] = [];
+	const titles: string[] = [];
 	toolsArray.forEach((tool: Tool) => {
 		titles.push(Helpers.urlCleaner(tool.title));
 	});

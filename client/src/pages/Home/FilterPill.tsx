@@ -14,10 +14,12 @@ const FilterPill = () => {
 				const filterBtn: Element | null = document.querySelector(
 					`#${Helpers.stripAllSpaces(item)}`
 				);
-				filterBtn!.classList.replace('bg-primary', 'bg-secondary');
+				if (filterBtn != null)
+					filterBtn.classList.replace('bg-primary', 'bg-secondary');
 
 				const allBtn: Element | null = document.querySelector('#All');
-				allBtn!.classList.replace('bg-primary', 'bg-secondary');
+				if (allBtn != null)
+					allBtn.classList.replace('bg-primary', 'bg-secondary');
 			}
 		});
 
@@ -43,7 +45,8 @@ const FilterPill = () => {
 		const filterBtn: Element | null = document.querySelector(
 			`#${Helpers.stripAllSpaces(filter)}`
 		);
-		filterBtn!.classList.replace('bg-secondary', 'bg-primary');
+		if (filterBtn != null)
+			filterBtn.classList.replace('bg-secondary', 'bg-primary');
 	};
 
 	const filters: string[] = [
@@ -60,7 +63,7 @@ const FilterPill = () => {
 				key={i}
 				id={Helpers.stripAllSpaces(filter)}
 				className="mr-2 my-1 bg-secondary px-4 py-1 rounded-full hover:bg-secondaryHighlight"
-				onClick={(e) => setFilter(filter)}
+				onClick={() => setFilter(filter)}
 			>
 				<p className="text-lightText">{filter}</p>
 			</button>

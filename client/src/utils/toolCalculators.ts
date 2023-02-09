@@ -9,7 +9,7 @@ class ToolCalculators {
 
 		if (Number.isNaN(answer)) return '';
 
-		let answerString: string = Number.isInteger(answer)
+		const answerString: string = Number.isInteger(answer)
 			? answer.toString()
 			: answer.toFixed(2);
 
@@ -26,7 +26,7 @@ class ToolCalculators {
 
 		if (Number.isNaN(answer)) return '';
 
-		let answerString: string = Number.isInteger(answer)
+		const answerString: string = Number.isInteger(answer)
 			? answer.toString()
 			: answer.toFixed(2);
 
@@ -43,7 +43,7 @@ class ToolCalculators {
 
 		if (Number.isNaN(answer)) return '';
 
-		let answerString: string = Number.isInteger(answer)
+		const answerString: string = Number.isInteger(answer)
 			? answer.toString()
 			: answer.toFixed(2);
 

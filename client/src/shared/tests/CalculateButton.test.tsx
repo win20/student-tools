@@ -3,7 +3,10 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import CalculateButton from 'shared/CalculateButton';
 
 const testFunction = (): void => {
-	document.getElementById('para')!.textContent = 'test';
+	const element = document.getElementById('para') as HTMLElement;
+	if (element !== null) {
+		element.textContent = 'test';
+	}
 };
 
 const MockComponent = (): JSX.Element => {

@@ -9,7 +9,7 @@ const Percentage = () => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
 	function getToolsToSuggest() {
-		let tools: Tool[] = [];
+		const tools: Tool[] = [];
 		toolsArray.forEach((tool: Tool) => {
 			if (tool.title.toLowerCase().includes('percentage')) {
 				tools.push(tool);
@@ -19,7 +19,7 @@ const Percentage = () => {
 		return tools;
 	}
 
-	let toolsToSuggest: Tool[] = getToolsToSuggest();
+	const toolsToSuggest: Tool[] = getToolsToSuggest();
 
 	useEffect(() => {
 		const handleWindowResize = () => {

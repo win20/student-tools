@@ -1,7 +1,6 @@
 import { Helpers } from '../../utils/helpers';
 import { toolsArray } from '../../utils/tools';
 import { Tool } from '../../utils/tools';
-import { Link } from 'react-router-dom';
 
 const ToolCard = ({ searchQuery }: { searchQuery: string }) => {
 	const filterTools = (tool: Tool) => {
