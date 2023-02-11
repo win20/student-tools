@@ -2,29 +2,31 @@ import { expect } from 'vitest';
 import { render, cleanup, screen } from '@testing-library/react';
 import { Tool } from 'utils/tools';
 import SuggestedTools from 'shared/SuggestedTools';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import ToolsLoader from 'pages/Tools/ToolsLoader';
+import Percentage from 'pages/Tools/Percentage/Percentage';
 
 const mockToolsArray = [
 	new Tool('Percentage', 'description2', 'Maths', 'function'),
 	new Tool('Quadratic Formula', 'description1', 'Maths', 'function'),
 ];
 
-const MockSuggestedTools = () => {
+const MockRouting = () => {
 	return (
-		<BrowserRouter>
+		<MemoryRouter initialEntries={['/suggested-tools']}>
 			<Routes>
-				<Route path="/" element={<></>} />
-				<Route path="/tools/:toolid" element={<ToolsLoader />} />
+				<Route path="/tools/percentage" element={<Percentage />} />
+				<Route
+					path="/suggested-tools"
+					element={<SuggestedTools toolsArray={mockToolsArray} />}
+				/>
 			</Routes>
-			<SuggestedTools toolsArray={mockToolsArray} />
-		</BrowserRouter>
+		</MemoryRouter>
 	);
 };
 
 beforeEach(() => {
-	render(<MockSuggestedTools />);
+	render(<MockRouting />);
 });
 afterEach(() => {
 	cleanup();
@@ -35,9 +37,12 @@ it('should receive tools array as prop', () => {
 	expect(divElements).toHaveLength(mockToolsArray.length);
 });
 
-// TODO: Add test to check second link, when content is added
+// TODO Add test to check second link, when content is added
 it('should link to correct tool page', async () => {
-	const linkElements = screen.getAllByRole('link');
-	await userEvent.click(linkElements[0]);
-	expect(screen.getByText(/Percentage Calculators/i)).toBeInTheDocument();
+	const linkElement = screen.getAllByLabelText('go to tool page');
+	await userEvent.click(linkElement[0]);
+
+	expect(
+		screen.getByRole('heading', { name: 'Percentage Calculators' })
+	).toBeInTheDocument();
 });

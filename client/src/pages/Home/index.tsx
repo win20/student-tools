@@ -1,4 +1,4 @@
-import NavBar from '../../shared/Header';
+import Header from '../../shared/Header';
 import SearchBar from './SearchBar';
 import FilterPill from './FilterPill';
 import ToolCardRec from './ToolCardRec';
@@ -10,7 +10,7 @@ const Home = () => {
 
 	return (
 		<div id="Home">
-			<NavBar />
+			<Header />
 			<div id="homeContent" className="p-5 md:p-10 desktop:px-96">
 				<h2 className="text-2xl font-semibold mb-5 desktop:text-3xl">
 					Calculators and Formulas

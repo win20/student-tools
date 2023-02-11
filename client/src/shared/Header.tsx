@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-const NavBar = () => {
+const Header = () => {
 	const { toolid } = useParams();
 
 	return (
@@ -10,7 +10,7 @@ const NavBar = () => {
 			className="p-5 bg-primary text-lightText md:p-10 desktop:px-64 desktop:py-16"
 		>
 			<div className="flex justify-between mb-8 items-center md:mb-12">
-				<Link to="/">
+				<Link to="/" aria-label="go to home page">
 					<h1 title="Back to home page" className="text-lg md:text-3xl">
 						<strong>student</strong>tools
 					</h1>
@@ -59,4 +59,4 @@ const NavBar = () => {
 	);
 };
 
-export default NavBar;
+export default Header;
