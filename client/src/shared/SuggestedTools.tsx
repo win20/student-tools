@@ -10,7 +10,7 @@ type propsType = {
 const SuggestedTools = (props: propsType) => {
 	const renderTools: JSX.Element[] = props.toolsArray.map(
 		(tool: Tool, i: number) => (
-			<div key={i}>
+			<div className="suggested-tool" key={i}>
 				<Link to={`/tools/${Helpers.urlCleaner(tool.title)}`}>
 					<SquareToolCard tool={tool} />
 				</Link>
