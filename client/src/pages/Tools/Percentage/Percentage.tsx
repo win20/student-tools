@@ -85,7 +85,7 @@ const Percentage = () => {
 			</h1>
 
 			{windowWidth > 640 && (
-				<div className="hidden md:flex">
+				<div id="large-screen-percentage" className="hidden md:flex">
 					<div className="mt-5 flex flex-col">
 						<div className="mb-5">
 							<input id="xInput1" type="text" className="calculator-input" />
@@ -135,7 +135,7 @@ const Percentage = () => {
 			)}
 
 			{/* Small screens */}
-			<div className="flex flex-col md:hidden">
+			<div id="small-screen-percentage" className="flex flex-col md:hidden">
 				<div className="my-5">
 					<input id="xInput1" type="text" className="calculator-input" />
 					is what percent of
