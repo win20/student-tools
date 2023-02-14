@@ -4,16 +4,23 @@ import { Tool } from '../../utils/tools';
 import SquareToolCard from 'shared/SquareToolCard';
 import { Helpers } from 'utils/helpers';
 
-const ToolCardSquare = ({ searchQuery }: { searchQuery: string }) => {
+type propsType = {
+	searchQuery: string;
+	toolsArray: Tool[];
+};
+
+const SquareToolCards = (props: propsType) => {
 	const filterTools = (tool: Tool): boolean => {
-		return tool.title.toLocaleLowerCase().includes(searchQuery.toLowerCase());
+		return tool.title
+			.toLocaleLowerCase()
+			.includes(props.searchQuery.toLowerCase());
 	};
 
 	const filteredTools: Tool[] = toolsArray.filter(filterTools);
 
 	const renderTools: JSX.Element[] = filteredTools.map(
 		(tool: Tool, i: number) => (
-			<div key={i}>
+			<div key={i} data-testid="square-tool-cards">
 				<Link to={`/tools/${Helpers.urlCleaner(tool.title)}`}>
 					<SquareToolCard tool={tool} />
 				</Link>
@@ -28,4 +35,4 @@ const ToolCardSquare = ({ searchQuery }: { searchQuery: string }) => {
 	);
 };
 
-export default ToolCardSquare;
+export default SquareToolCards;

@@ -2,8 +2,9 @@ import Header from '../../shared/Header';
 import SearchBar from './SearchBar';
 import FilterPill from './FilterPill';
 import ToolCardRec from './ToolCardRec';
-import ToolCardSquare from './SquareToolCards';
+import SquareToolCards from './SquareToolCards';
 import { useState } from 'react';
+import { toolsArray } from 'utils/tools';
 
 const Home = () => {
 	const [searchQuery, setSearchQuery] = useState<string>('');
@@ -22,7 +23,7 @@ const Home = () => {
 				</div>
 
 				<ToolCardRec searchQuery={searchQuery} />
-				<ToolCardSquare searchQuery={searchQuery} />
+				<SquareToolCards searchQuery={searchQuery} toolsArray={toolsArray} />
 			</div>
 		</div>
 	);

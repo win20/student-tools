@@ -12,6 +12,31 @@ const MockPercentagePage = (): JSX.Element => {
 	);
 };
 
+type testCalculatorFunctionsParams = {
+	xInputId: string;
+	yInputId: string;
+	outputId: string;
+	testXInput: string;
+	testYInput: string;
+};
+
+const setupCalculatorTests = async (
+	params: testCalculatorFunctionsParams
+): Promise<string> => {
+	const xInput = document.getElementById(params.xInputId) as HTMLInputElement;
+	const yInput = document.getElementById(params.yInputId) as HTMLInputElement;
+	const outputBtn = document.getElementById(
+		`${params.outputId}-btn`
+	) as HTMLButtonElement;
+	const output = document.getElementById(params.outputId) as HTMLInputElement;
+
+	await userEvent.type(xInput, params.testXInput);
+	await userEvent.type(yInput, params.testYInput);
+	await userEvent.click(outputBtn);
+
+	return output.value;
+};
+
 describe('Conditional page rendering', () => {
 	it('should render correct small screen version of page', () => {
 		global.window.innerWidth = 300;
@@ -86,56 +111,135 @@ describe('Input validation', () => {
 	});
 });
 
-describe('Test the calculations', () => {
-	// ? These tests should inherently cover corresponding functions in toolCalculators.ts
-	it('xIsWhatPercentOfY - should display correct output', async () => {
+// ? These tests should inherently cover corresponding functions in toolCalculators.ts
+describe('Percentage_XIsWhatPercentOfY', () => {
+	it('should display correct output - integer output', async () => {
 		render(<MockPercentagePage />);
 
-		const xInput = document.getElementById('xInput1') as HTMLInputElement;
-		const yInput = document.getElementById('yInput1') as HTMLInputElement;
-		const outputBtn = document.getElementById(
-			'output1-btn'
-		) as HTMLButtonElement;
-		const output = document.getElementById('output1') as HTMLInputElement;
+		const answer = await setupCalculatorTests({
+			xInputId: 'xInput1',
+			yInputId: 'yInput1',
+			outputId: 'output1',
+			testXInput: '20',
+			testYInput: '100',
+		});
 
-		await userEvent.type(xInput, '20');
-		await userEvent.type(yInput, '100');
-		await userEvent.click(outputBtn);
-
-		expect(output).toHaveValue('20%');
+		expect(answer).toBe('20%');
 	});
 
-	it('whatIsXPercentOfY - should display correct output', async () => {
+	it('should display correct output - float output (2 d.p.)', async () => {
 		render(<MockPercentagePage />);
 
-		const xInput = document.getElementById('xInput2') as HTMLInputElement;
-		const yInput = document.getElementById('yInput2') as HTMLInputElement;
-		const outputBtn = document.getElementById(
-			'output2-btn'
-		) as HTMLButtonElement;
-		const output = document.getElementById('output2') as HTMLInputElement;
+		const answer = await setupCalculatorTests({
+			xInputId: 'xInput1',
+			yInputId: 'yInput1',
+			outputId: 'output1',
+			testXInput: '10.58',
+			testYInput: '50',
+		});
 
-		await userEvent.type(xInput, '20');
-		await userEvent.type(yInput, '100');
-		await userEvent.click(outputBtn);
-
-		expect(output).toHaveValue('20');
+		expect(answer).toBe('21.16%');
 	});
 
-	it('percentageIncreaseOrDecrease - should display correct output', async () => {
+	it('should display empty string if inputs are invalid', async () => {
 		render(<MockPercentagePage />);
 
-		const xInput = document.getElementById('xInput3') as HTMLInputElement;
-		const yInput = document.getElementById('yInput3') as HTMLInputElement;
-		const outputBtn = document.getElementById(
-			'output3-btn'
-		) as HTMLButtonElement;
-		const output = document.getElementById('output3') as HTMLInputElement;
+		const answer = await setupCalculatorTests({
+			xInputId: 'xInput1',
+			yInputId: 'yInput1',
+			outputId: 'output1',
+			testXInput: 'invalid',
+			testYInput: 'invalid',
+		});
 
-		await userEvent.type(xInput, '10');
-		await userEvent.type(yInput, '20');
-		await userEvent.click(outputBtn);
+		expect(answer).toBe('');
+	});
+});
 
-		expect(output).toHaveValue('100%');
+describe('Percentage_WhatIsXPercentOfY', () => {
+	it('should display correct output - integer output', async () => {
+		render(<MockPercentagePage />);
+
+		const answer = await setupCalculatorTests({
+			xInputId: 'xInput2',
+			yInputId: 'yInput2',
+			outputId: 'output2',
+			testXInput: '20',
+			testYInput: '100',
+		});
+
+		expect(answer).toBe('20');
+	});
+
+	it('should display correct output - float output (2 d.p.)', async () => {
+		render(<MockPercentagePage />);
+
+		const answer = await setupCalculatorTests({
+			xInputId: 'xInput2',
+			yInputId: 'yInput2',
+			outputId: 'output2',
+			testXInput: '10.58',
+			testYInput: '50',
+		});
+
+		expect(answer).toBe('5.29');
+	});
+
+	it('should display empty string on invalid input', async () => {
+		render(<MockPercentagePage />);
+
+		const answer = await setupCalculatorTests({
+			xInputId: 'xInput2',
+			yInputId: 'yInput2',
+			outputId: 'output2',
+			testXInput: 'invalid',
+			testYInput: 'invalid',
+		});
+
+		expect(answer).toBe('');
+	});
+});
+
+describe('Percentage_IncreaseOrDecrease', () => {
+	it('should display correct output - integer output', async () => {
+		render(<MockPercentagePage />);
+
+		const answer = await setupCalculatorTests({
+			xInputId: 'xInput3',
+			yInputId: 'yInput3',
+			outputId: 'output3',
+			testXInput: '10',
+			testYInput: '20',
+		});
+
+		expect(answer).toBe('100%');
+	});
+
+	it('should display correct output - float output (2 d.p.)', async () => {
+		render(<MockPercentagePage />);
+
+		const answer = await setupCalculatorTests({
+			xInputId: 'xInput3',
+			yInputId: 'yInput3',
+			outputId: 'output3',
+			testXInput: '10.58',
+			testYInput: '50',
+		});
+
+		expect(answer).toBe('372.59%');
+	});
+
+	it('should display empty string on invalid input', async () => {
+		render(<MockPercentagePage />);
+
+		const answer = await setupCalculatorTests({
+			xInputId: 'xInput3',
+			yInputId: 'yInput3',
+			outputId: 'output3',
+			testXInput: 'invalid',
+			testYInput: 'invalid',
+		});
+
+		expect(answer).toBe('');
 	});
 });
