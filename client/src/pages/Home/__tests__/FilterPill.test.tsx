@@ -1,10 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter, Routes, Route } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import FilterPill from '../FilterPill';
 import SquareToolCards from '../SquareToolCards';
 import { Tool } from 'utils/tools';
-import { Helpers } from 'utils/helpers';
 
 const mockFiltersList: string[] = [
 	'All',
@@ -44,7 +43,6 @@ it('should hide items where category != filter', async () => {
 	render(<MockAppSetup />);
 
 	await userEvent.click(screen.getByRole('button', { name: 'Maths' }));
-
 	const itemsToBeHidden1 = document.querySelectorAll('.Physics');
 
 	itemsToBeHidden1.forEach((item) => {
@@ -52,4 +50,18 @@ it('should hide items where category != filter', async () => {
 	});
 });
 
-it('should show all elements when "All" filter is clicked');
+it('should show all elements when "All" filter is clicked', async () => {
+	render(<MockAppSetup />);
+
+	await userEvent.click(screen.getByRole('button', { name: 'All' }));
+	expect(screen.getAllByRole('button')).toHaveLength(mockFiltersList.length);
+});
+
+it('should change the background colour of filter buttons when clicked', async () => {
+	render(<MockAppSetup />);
+
+	const clickedFilterBtn = screen.getByRole('button', { name: 'Maths' });
+
+	await userEvent.click(clickedFilterBtn);
+	expect(clickedFilterBtn).toHaveClass('bg-primary');
+});
