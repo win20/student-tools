@@ -1,8 +1,12 @@
 import { Helpers } from '../../utils/helpers';
 
-const FilterPill = () => {
+type propsType = {
+	filters: string[];
+};
+
+const FilterPill = (props: propsType) => {
 	const setFilter = (filter: string): void => {
-		filters.forEach((item) => {
+		props.filters.forEach((item) => {
 			if (item !== filter && item !== 'All') {
 				const elements: NodeListOf<Element> = document.querySelectorAll(
 					`.${Helpers.stripAllSpaces(item)}`
@@ -24,7 +28,7 @@ const FilterPill = () => {
 		});
 
 		if (filter === 'All') {
-			filters.forEach((item) => {
+			props.filters.forEach((item) => {
 				const elements: NodeListOf<Element> = document.querySelectorAll(
 					`.${Helpers.stripAllSpaces(item)}`
 				);
@@ -49,15 +53,7 @@ const FilterPill = () => {
 			filterBtn.classList.replace('bg-secondary', 'bg-primary');
 	};
 
-	const filters: string[] = [
-		'All',
-		'Maths',
-		'Physics',
-		'Life and Finance',
-		'Health',
-	];
-
-	const filterButtons: JSX.Element[] = filters.map(
+	const filterButtons: JSX.Element[] = props.filters.map(
 		(filter: string, i: number) => (
 			<button
 				key={i}

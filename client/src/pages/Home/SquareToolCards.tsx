@@ -16,7 +16,7 @@ const SquareToolCards = (props: propsType) => {
 			.includes(props.searchQuery.toLowerCase());
 	};
 
-	const filteredTools: Tool[] = toolsArray.filter(filterTools);
+	const filteredTools: Tool[] = props.toolsArray.filter(filterTools);
 
 	const renderTools: JSX.Element[] = filteredTools.map(
 		(tool: Tool, i: number) => (

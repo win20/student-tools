@@ -1,13 +1,19 @@
 import { Helpers } from '../../utils/helpers';
-import { toolsArray } from '../../utils/tools';
 import { Tool } from '../../utils/tools';
 
-const ToolCard = ({ searchQuery }: { searchQuery: string }) => {
+type propsType = {
+	searchQuery: string;
+	toolsArray: Tool[];
+};
+
+const RectangleToolCards = (props: propsType) => {
 	const filterTools = (tool: Tool) => {
-		return tool.title.toLocaleLowerCase().includes(searchQuery.toLowerCase());
+		return tool.title
+			.toLocaleLowerCase()
+			.includes(props.searchQuery.toLowerCase());
 	};
 
-	const filteredTools: Tool[] = toolsArray.filter(filterTools);
+	const filteredTools: Tool[] = props.toolsArray.filter(filterTools);
 
 	const renderTools: JSX.Element[] = filteredTools.map(
 		(tool: Tool, i: number) => (
@@ -51,4 +57,4 @@ const ToolCard = ({ searchQuery }: { searchQuery: string }) => {
 	);
 };
 
-export default ToolCard;
+export default RectangleToolCards;

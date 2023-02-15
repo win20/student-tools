@@ -1,10 +1,11 @@
 import Header from '../../shared/Header';
 import SearchBar from './SearchBar';
 import FilterPill from './FilterPill';
-import ToolCardRec from './ToolCardRec';
+import ToolCardRec from './RectangleToolCards';
 import SquareToolCards from './SquareToolCards';
 import { useState } from 'react';
 import { toolsArray } from 'utils/tools';
+import { filters } from 'utils/filters';
 
 const Home = () => {
 	const [searchQuery, setSearchQuery] = useState<string>('');
@@ -19,10 +20,10 @@ const Home = () => {
 
 				<div className="md:flex justify-between mb-2">
 					<SearchBar setSearchQuery={setSearchQuery} />
-					<FilterPill />
+					<FilterPill filters={filters} />
 				</div>
 
-				<ToolCardRec searchQuery={searchQuery} />
+				<ToolCardRec searchQuery={searchQuery} toolsArray={toolsArray} />
 				<SquareToolCards searchQuery={searchQuery} toolsArray={toolsArray} />
 			</div>
 		</div>
