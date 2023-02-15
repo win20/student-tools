@@ -1,8 +1,5 @@
 import { expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import SearchBar from '../SearchBar';
-import { useState } from 'react';
 import SquareToolCards from '../SquareToolCards';
 import { MemoryRouter } from 'react-router-dom';
 import { Tool } from 'utils/tools';
