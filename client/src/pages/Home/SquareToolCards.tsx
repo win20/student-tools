@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { toolsArray } from '../../utils/tools';
 import { Tool } from '../../utils/tools';
 import SquareToolCard from 'shared/SquareToolCard';
 import { Helpers } from 'utils/helpers';

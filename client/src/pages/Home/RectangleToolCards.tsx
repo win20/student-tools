@@ -1,5 +1,6 @@
 import { Helpers } from '../../utils/helpers';
 import { Tool } from '../../utils/tools';
+import RectangleToolCard from 'shared/RectangleToolCard';
 
 type propsType = {
 	searchQuery: string;
@@ -15,35 +16,13 @@ const RectangleToolCards = (props: propsType) => {
 
 	const filteredTools: Tool[] = props.toolsArray.filter(filterTools);
 
-	const renderTools: JSX.Element[] = filteredTools.map(
-		(tool: Tool, i: number) => (
-			<div
-				key={i}
-				className={`py-5 md:border-1 md:p-5 md:my-5 md:rounded-md md:border-opacity-50 ${Helpers.stripAllSpaces(
-					tool.category
-				)}`}
-			>
-				<div className="flex items-center justify-between md:relative">
-					<p className="text-xl">{tool.title}</p>
-
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 24 24"
-						fill="currentColor"
-						className="w-8 h-8 md:w-11 md:h-11 md:absolute md:right-0 md:top-1"
-					>
-						<path
-							fillRule="evenodd"
-							d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-							clipRule="evenodd"
-						/>
-					</svg>
-				</div>
-
-				<p className="hidden md:block">{tool.description}</p>
-			</div>
-		)
-	);
+	const renderTools: JSX.Element[] = filteredTools.map((tool: Tool) => (
+		<RectangleToolCard
+			key={Helpers.stripAllSpaces(tool.title)}
+			tool={tool}
+			linkPath={`/tools/${Helpers.urlCleaner(tool.title)}`}
+		/>
+	));
 
 	return (
 		<div
