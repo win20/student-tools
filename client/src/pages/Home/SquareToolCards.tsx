@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Tool } from '../../utils/tools';
 import SquareToolCard from 'shared/SquareToolCard';
 import { Helpers } from 'utils/helpers';
@@ -19,10 +18,8 @@ const SquareToolCards = (props: propsType) => {
 
 	const renderTools: JSX.Element[] = filteredTools.map(
 		(tool: Tool, i: number) => (
-			<div key={i} data-testid="square-tool-cards">
-				<Link to={`/tools/${Helpers.urlCleaner(tool.title)}`}>
-					<SquareToolCard tool={tool} />
-				</Link>
+			<div key={i} data-testid="square-tool-cards" aria-label="go to tool page">
+					<SquareToolCard tool={tool} linkPath={`/tools/${Helpers.urlCleaner(tool.title)}`} />
 			</div>
 		)
 	);

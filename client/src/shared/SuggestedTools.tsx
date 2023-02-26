@@ -1,22 +1,40 @@
 import { Tool } from 'utils/tools';
-import { Link } from 'react-router-dom';
 import SquareToolCard from './SquareToolCard';
 import { Helpers } from 'utils/helpers';
+import { useEffect, useState } from 'react';
+import RectangleToolCard from './RectangleToolCard';
 
 type propsType = {
 	toolsArray: Tool[];
 };
 
 const SuggestedTools = (props: propsType) => {
-	const renderTools: JSX.Element[] = props.toolsArray.map(
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+	useEffect(() => {
+		const handleWindowResize = () => {
+			setWindowWidth(window.innerWidth);
+		};
+
+		window.addEventListener('resize', handleWindowResize);
+
+		return () => {
+			window.removeEventListener('resize', handleWindowResize);
+		};
+	});
+
+	const renderSquareTools: JSX.Element[] = props.toolsArray.map(
 		(tool: Tool, i: number) => (
 			<div className="suggested-tool" key={i}>
-				<Link
-					aria-label="go to tool page"
-					to={`/tools/${Helpers.urlCleaner(tool.title)}`}
-				>
-					<SquareToolCard tool={tool} />
-				</Link>
+				<SquareToolCard tool={tool} linkPath={`/tools/${Helpers.urlCleaner(tool.title)}`} />
+			</div>
+		)
+	);
+
+	const renderRectangleTools: JSX.Element[] = props.toolsArray.map(
+		(tool: Tool, i: number) => (
+			<div className="suggested-tool" key={i}>
+				<RectangleToolCard tool={tool} linkPath={`/tools/${Helpers.urlCleaner(tool.title)}`} />
 			</div>
 		)
 	);
@@ -24,7 +42,13 @@ const SuggestedTools = (props: propsType) => {
 	return (
 		<div>
 			<h2 className="mt-10 text-xl font-bold">Suggested Tools</h2>
-			<div className="flex">{renderTools}</div>
+			<div className="md:flex">
+				{windowWidth > 768 ? (
+					renderSquareTools
+				) : (
+					renderRectangleTools
+				)}
+			</div>
 		</div>
 	);
 };

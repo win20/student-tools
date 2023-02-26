@@ -78,63 +78,60 @@ const Percentage = () => {
 		}
 	};
 
-	return (
-		<div className="md:mt-10 responsive-spacing">
-			<h1 className="text-xl font-semibold md:text-3xl">
-				Percentage Calculators
-			</h1>
-
-			{windowWidth > 640 && (
-				<div id="large-screen-percentage" className="hidden md:flex">
-					<div className="mt-5 flex flex-col">
-						<div className="mb-5">
-							<input id="xInput1" type="text" className="calculator-input" />
-							is what percent of
-							<input
-								id="yInput1"
-								type="text"
-								className="calculator-input ml-2"
-							/>
-						</div>
-						<div className="mb-5">
-							What is{' '}
-							<input id="xInput2" type="text" className="calculator-input" />%
-							of <input id="yInput2" type="text" className="calculator-input" />
-						</div>
-						<div>
-							Percentage increase/decrease from
-							<input
-								id="xInput3"
-								type="text"
-								className="calculator-input ml-2"
-							/>
-							to
-							<input
-								id="yInput3"
-								type="text"
-								className="calculator-input ml-2"
-							/>
-						</div>
+	const RenderBigScreen = () => {
+		return (
+			<div id="large-screen-percentage" className="hidden md:flex">
+				<div className="mt-5 flex flex-col">
+					<div className="mb-5">
+						<input id="xInput1" type="text" className="calculator-input" />
+						is what percent of
+						<input
+							id="yInput1"
+							type="text"
+							className="calculator-input ml-2"
+						/>
 					</div>
-
-					<div className="mt-5 flex flex-col">
-						<div className="mb-5">
-							<CalculateButton id="output1" function={xIsWhatPercentOfY} />
-						</div>
-						<div className="mb-5">
-							<CalculateButton id="output2" function={whatIsXPercentOfY} />
-						</div>
-						<div>
-							<CalculateButton
-								id="output3"
-								function={percentageIncreaseOrDecrease}
-							/>
-						</div>
+					<div className="mb-5">
+						What is{' '}
+						<input id="xInput2" type="text" className="calculator-input" />%
+						of <input id="yInput2" type="text" className="calculator-input" />
+					</div>
+					<div>
+						Percentage increase/decrease from
+						<input
+							id="xInput3"
+							type="text"
+							className="calculator-input ml-2"
+						/>
+						to
+						<input
+							id="yInput3"
+							type="text"
+							className="calculator-input ml-2"
+						/>
 					</div>
 				</div>
-			)}
 
-			{/* Small screens */}
+				<div className="mt-5 flex flex-col">
+					<div className="mb-5">
+						<CalculateButton id="output1" function={xIsWhatPercentOfY} />
+					</div>
+					<div className="mb-5">
+						<CalculateButton id="output2" function={whatIsXPercentOfY} />
+					</div>
+					<div>
+						<CalculateButton
+							id="output3"
+							function={percentageIncreaseOrDecrease}
+						/>
+					</div>
+				</div>
+			</div>
+		)
+	}
+
+	const RenderSmallScreen = () => {
+		return (
 			<div id="small-screen-percentage" className="flex flex-col md:hidden">
 				<div className="my-5">
 					<input id="xInput1" type="text" className="calculator-input" />
@@ -166,6 +163,20 @@ const Percentage = () => {
 					</div>
 				</div>
 			</div>
+		)
+	}
+
+	return (
+		<div className="md:mt-10 responsive-spacing">
+			<h1 className="text-xl font-semibold md:text-3xl">
+				Percentage Calculators
+			</h1>
+
+			{windowWidth > 768 ? (
+				<RenderBigScreen />
+			) : (
+				<RenderSmallScreen />
+			)}
 
 			<SuggestedTools toolsArray={toolsToSuggest} />
 		</div>
