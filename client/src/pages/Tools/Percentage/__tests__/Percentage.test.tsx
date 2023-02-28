@@ -111,7 +111,7 @@ describe('Input validation', () => {
 	});
 });
 
-// ? These tests should inherently cover corresponding functions in toolCalculators.ts
+// ? These tests should inherently cover corresponding functions in ToolCalculators.ts
 describe('Percentage_XIsWhatPercentOfY', () => {
 	it('should display correct output - integer output', async () => {
 		render(<MockPercentagePage />);

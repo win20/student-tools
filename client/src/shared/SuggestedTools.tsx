@@ -12,15 +12,7 @@ const SuggestedTools = (props: propsType) => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
 	useEffect(() => {
-		const handleWindowResize = () => {
-			setWindowWidth(window.innerWidth);
-		};
-
-		window.addEventListener('resize', handleWindowResize);
-
-		return () => {
-			window.removeEventListener('resize', handleWindowResize);
-		};
+		Helpers.windowResizeListener(setWindowWidth);
 	});
 
 	const renderSquareTools: JSX.Element[] = props.toolsArray.map(

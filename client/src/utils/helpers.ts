@@ -1,3 +1,6 @@
+import { Tool, toolsArray } from './tools';
+import { Dispatch, SetStateAction } from 'react';
+
 class Helpers {
 	static stripAllSpaces(input: string): string {
 		return input.replace(/\s/g, '');
@@ -16,8 +19,31 @@ class Helpers {
 
 	static urlCleaner(input: string): string {
 		const lowerCase = input.toLowerCase();
-		const cleanUrl = lowerCase.replace(/ /g, '-');
-		return cleanUrl;
+		return lowerCase.replace(/ /g, '-');
+	}
+
+	static getToolsToSuggest(currentPage: string): Tool[] {
+		const tools: Tool[] = [];
+		toolsArray.forEach((tool: Tool) => {
+			const removeHyphen = currentPage.replace(/-/g, ' ');
+			if (tool.title.toLowerCase().includes(removeHyphen)) {
+				tools.push(tool);
+			}
+		});
+
+		return tools;
+	}
+
+	static windowResizeListener(setWindowWidth: Dispatch<SetStateAction<number>>) {
+		const handleWindowResize = () => {
+			setWindowWidth(window.innerWidth);
+		};
+
+		window.addEventListener('resize', handleWindowResize);
+
+		return () => {
+			window.removeEventListener('resize', handleWindowResize);
+		};
 	}
 }
 
