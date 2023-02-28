@@ -4,10 +4,10 @@ import { Tool } from 'utils/tools';
 import SuggestedTools from 'shared/SuggestedTools';
 import { Routes, Route, MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import Percentage from 'pages/Tools/Percentage/Percentage';
+import PercentageIndex from 'pages/Tools/Percentage/PercentageIndex';
 
 const mockToolsArray = [
-	new Tool('Percentage', 'description2', 'Maths', 'function'),
+	new Tool('PercentageIndex', 'description2', 'Maths', 'function'),
 	new Tool('Quadratic Formula', 'description1', 'Maths', 'function'),
 ];
 
@@ -15,7 +15,7 @@ const MockRouting = () => {
 	return (
 		<MemoryRouter initialEntries={['/suggested-tools']}>
 			<Routes>
-				<Route path="/tools/percentage" element={<Percentage />} />
+				<Route path="/tools/percentage" element={<PercentageIndex />} />
 				<Route
 					path="/suggested-tools"
 					element={<SuggestedTools toolsArray={mockToolsArray} />}

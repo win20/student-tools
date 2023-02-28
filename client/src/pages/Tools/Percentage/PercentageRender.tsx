@@ -1,17 +1,9 @@
-import CalculateButton from 'shared/CalculateButton';
-import { Helpers } from 'utils/helpers';
+import CalculateButton from '../../../shared/CalculateButton';
 import { useEffect, useState } from 'react';
-import SuggestedTools from 'shared/SuggestedTools';
-import { Tool } from 'utils/tools';
-import { useParams } from 'react-router-dom';
+import { Helpers } from '../../../utils/helpers';
 
-const Percentage = () => {
-	const { toolid } = useParams();
+const PercentageRender = () => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-	const toolsToSuggest: Tool[] = Helpers.getToolsToSuggest(toolid!);
-
 	useEffect(() => {
 		Helpers.windowResizeListener(setWindowWidth);
 	});
@@ -104,17 +96,7 @@ const Percentage = () => {
 		);
 	};
 
-	return (
-		<div className="md:mt-10 responsive-spacing">
-			<h1 className="text-xl font-semibold md:text-3xl">
-				Percentage Calculators
-			</h1>
-
-			{windowWidth > 768 ? <RenderBigScreen /> : <RenderSmallScreen />}
-
-			<SuggestedTools toolsArray={toolsToSuggest} />
-		</div>
-	);
+	return <>{windowWidth > 768 ? <RenderBigScreen /> : <RenderSmallScreen />}</>;
 };
 
-export default Percentage;
+export default PercentageRender;

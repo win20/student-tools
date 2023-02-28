@@ -2,11 +2,11 @@ import { useParams } from 'react-router-dom';
 import { Tool } from '../../../utils/tools';
 import { Helpers } from '../../../utils/helpers';
 import SuggestedTools from '../../../shared/SuggestedTools';
-import CalculateButton from '../../../shared/CalculateButton';
 
-const QuadraticFormula = () => {
+const QuadraticFormulaIndex = () => {
 	const { toolid } = useParams();
 
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	const toolsToSuggest: Tool[] = Helpers.getToolsToSuggest(toolid!);
 
 	return (
@@ -19,4 +19,4 @@ const QuadraticFormula = () => {
 	);
 };
 
-export default QuadraticFormula;
+export default QuadraticFormulaIndex;

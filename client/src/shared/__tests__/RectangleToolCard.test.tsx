@@ -4,10 +4,15 @@ import { Tool } from 'utils/tools';
 import { Helpers } from 'utils/helpers';
 import RectangleToolCard from 'shared/RectangleToolCard';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
-import Percentage from 'pages/Tools/Percentage/Percentage';
+import PercentageIndex from 'pages/Tools/Percentage/PercentageIndex';
 import userEvent from '@testing-library/user-event';
 
-const mockTool = new Tool('Percentage', 'description2', 'Physics', 'function');
+const mockTool = new Tool(
+	'PercentageIndex',
+	'description2',
+	'Physics',
+	'function'
+);
 
 const MockRectangleCard = () => {
 	return (
@@ -22,7 +27,7 @@ const MockRectangleCard = () => {
 						/>
 					}
 				/>
-				<Route path="/tools/percentage" element={<Percentage />} />
+				<Route path="/tools/percentage" element={<PercentageIndex />} />
 			</Routes>
 		</MemoryRouter>
 	);

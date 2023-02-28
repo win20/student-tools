@@ -2,12 +2,12 @@ import { expect } from 'vitest';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import Percentage from '../Percentage';
+import PercentageIndex from '../PercentageIndex';
 
 const MockPercentagePage = (): JSX.Element => {
 	return (
 		<MemoryRouter>
-			<Percentage />
+			<PercentageIndex />
 		</MemoryRouter>
 	);
 };
