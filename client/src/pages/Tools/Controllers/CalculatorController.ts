@@ -1,34 +1,37 @@
 import { Helpers } from 'utils/helpers';
 import { calculatorsMap } from './ToolCalculators';
-import { MouseEvent } from 'react';
 
 const runFunctionByName = (
 	name: string,
-	xInput: HTMLInputElement,
-	yInput: HTMLInputElement
+	inputs: HTMLInputElement[]
 ): string => {
 	if (calculatorsMap[name]) {
-		return calculatorsMap[name](xInput, yInput);
+		return calculatorsMap[name](inputs);
 	}
 
 	throw new Error(`Method '${name}' is not implemented.`);
 };
 
 export default function getCalculationAnswer(
-	event: MouseEvent,
+	inputIds: string[],
 	functionName: string
 ): void {
-	const btnId = event.currentTarget.id;
-	const number = btnId.match(/[0-9]+/);
+	const number = inputIds[0].match(/[0-9]+/);
+	const inputElements: HTMLInputElement[] = [];
+	inputIds.forEach((item: string) => {
+		inputElements.push(document.getElementById(item) as HTMLInputElement);
+	});
 
-	const xInputId = `xInput${number}`;
-	const yInputId = `yInput${number}`;
 	const outputId = `output${number}`;
 
-	const xInput = document.getElementById(xInputId) as HTMLInputElement;
-	const yInput = document.getElementById(yInputId) as HTMLInputElement;
+	// const xInputId = `xInput${number}`;
+	// const yInputId = `yInput${number}`;
+	// const outputId = `output${number}`;
+	//
+	// const xInput = document.getElementById(xInputId) as HTMLInputElement;
+	// const yInput = document.getElementById(yInputId) as HTMLInputElement;
 
-	const answerResult = runFunctionByName(functionName, xInput, yInput);
+	const answerResult = runFunctionByName(functionName, inputElements);
 
 	if (answerResult === '') {
 		const btn = document.getElementById(`${outputId}-btn`) as HTMLElement;

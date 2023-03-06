@@ -1,14 +1,14 @@
 import getCalculationAnswer from '../pages/Tools/Controllers/CalculatorController';
-import { MouseEvent } from 'react';
 
 type propsType = {
 	id: string;
+	inputs: string[];
 	functionName: string;
 };
 
 const CalculateButton = (props: propsType) => {
-	const handleClick = (event: MouseEvent) => {
-		getCalculationAnswer(event, props.functionName);
+	const handleClick = () => {
+		getCalculationAnswer(props.inputs, props.functionName);
 	};
 
 	return (

@@ -12,7 +12,7 @@
 }
 
 .calculator-input {
-	@apply border-1 rounded-md mr-2 w-20 h-10 pl-2;
+	@apply border-1 rounded-md mr-2 w-28 h-10 pl-2;
 }
 
 .responsive-spacing {
