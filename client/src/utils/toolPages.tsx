@@ -1,4 +1,5 @@
 import PercentageIndex from 'pages/Tools/Percentage/PercentageIndex';
+import FractionToPercentageIndex from 'pages/Tools/FractionToPercentage/FractionToPercentageIndex';
 import { toolsArray, Tool } from './tools';
 import { Helpers } from './helpers';
 
@@ -19,6 +20,7 @@ interface AssociativeArray {
 
 const toolPages: AssociativeArray = {
 	[urlSuffixes[0]]: <PercentageIndex />,
+	[urlSuffixes[1]]: <FractionToPercentageIndex />,
 };
 
 export default toolPages;
