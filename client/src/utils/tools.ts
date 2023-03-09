@@ -22,7 +22,6 @@ const categories: string[] = ['Maths', 'Physics', 'Life and Finance', 'Health'];
 //prettier-ignore
 const toolsArray: Array<Tool> = [
 	new Tool('Percentage', 'description1', categories[0], 'percentage', ),
-	new Tool('Quadratic Formula', 'description2', categories[0], 'function'),
 	new Tool('Fraction to percentage', 'description1', categories[0], 'fraction'),
 	new Tool('Area of a circle', 'description2', categories[0], 'circle'),
 	new Tool('Density', 'description1', categories[1], 'density'),

@@ -24,13 +24,6 @@ export default function getCalculationAnswer(
 
 	const outputId = `output${number}`;
 
-	// const xInputId = `xInput${number}`;
-	// const yInputId = `yInput${number}`;
-	// const outputId = `output${number}`;
-	//
-	// const xInput = document.getElementById(xInputId) as HTMLInputElement;
-	// const yInput = document.getElementById(yInputId) as HTMLInputElement;
-
 	const answerResult = runFunctionByName(functionName, inputElements);
 
 	if (answerResult === '') {

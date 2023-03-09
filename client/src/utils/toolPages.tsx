@@ -1,5 +1,4 @@
 import PercentageIndex from 'pages/Tools/Percentage/PercentageIndex';
-import Quadratic from 'pages/Tools/QuadraticFormula/QuadraticFormulaIndex';
 import { toolsArray, Tool } from './tools';
 import { Helpers } from './helpers';
 
@@ -20,7 +19,6 @@ interface AssociativeArray {
 
 const toolPages: AssociativeArray = {
 	[urlSuffixes[0]]: <PercentageIndex />,
-	[urlSuffixes[1]]: <Quadratic />,
 };
 
 export default toolPages;
