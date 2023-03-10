@@ -34,6 +34,22 @@ class Helpers {
 			}
 		});
 
+		if (tools.length < 5) {
+			const randomList: number[] = [];
+
+			while (tools.length < 4) {
+				const r = Math.floor(Math.random() * toolsArray.length);
+
+				if (!randomList.includes(r)) {
+					randomList.push(r);
+				}
+
+				if (Helpers.urlCleaner(toolsArray[r].title) !== currentPage) {
+					tools.push(toolsArray[r]);
+				}
+			}
+		}
+
 		return tools;
 	}
 
