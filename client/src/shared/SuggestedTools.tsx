@@ -4,7 +4,6 @@ import { Helpers } from 'utils/helpers';
 import { useEffect, useState } from 'react';
 import RectangleToolCard from './RectangleToolCard';
 import { useParams } from 'react-router-dom';
-import { toolsArray } from 'utils/tools';
 
 const SuggestedTools = () => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
