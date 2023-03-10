@@ -10,30 +10,13 @@ const SuggestedTools = () => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 	const { toolid } = useParams();
 	const toolUri = toolid ? toolid : '';
-
-	const toolsToSuggest: Tool[] = Helpers.getToolsToSuggest(toolUri);
+	const [toolsToSuggest, setToolsToSuggest] = useState<Tool[]>([]);
 
 	useEffect(() => {
 		Helpers.windowResizeListener(setWindowWidth);
-	});
-
-	if (toolsToSuggest.length < 5) {
-		const randomList: number[] = [];
-
-		while (toolsToSuggest.length < 4) {
-			const r = Math.floor(Math.random() * toolsArray.length);
-
-			if (!randomList.includes(r)) {
-				randomList.push(r);
-			}
-
-			if (
-				Helpers.urlCleaner(toolsArray[r].title) !== Helpers.urlCleaner(toolUri)
-			) {
-				toolsToSuggest.push(toolsArray[r]);
-			}
-		}
-	}
+		// toolsToSuggest = Helpers.getToolsToSuggest(toolUri);
+		setToolsToSuggest(Helpers.getToolsToSuggest(toolUri));
+	}, []);
 
 	const renderSquareTools: JSX.Element[] = toolsToSuggest.map(
 		(tool: Tool, i: number) => (

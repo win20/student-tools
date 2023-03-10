@@ -1,4 +1,4 @@
-import getCalculationAnswer from '../pages/Tools/Controllers/CalculatorController';
+import getCalculationAnswer from '../pages/Tools/_controllers/CalculatorController';
 
 type propsType = {
 	id: string;
