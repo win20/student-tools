@@ -32,7 +32,7 @@ const toolsArray: Array<Tool> = [
 	new Tool('Miles per gallon', 'description2', categories[2], 'gallon'),
 	new Tool('Electricity Cost', 'description1', categories[2], 'electricity'),
 	new Tool('Body mass index', 'description2', categories[3], 'bmi'),
-	new Tool('Lean vody mass', 'description1', categories[3], 'leanbodymass'),
+	new Tool('Lean body mass', 'description1', categories[3], 'leanbodymass'),
 	new Tool('Total daily energy expenditure', 'description2', categories[3], 'calories'),
 	new Tool('Calories burned', 'description1', categories[3], 'caloriesburned'),
 ];

@@ -26,7 +26,10 @@ class Helpers {
 		const tools: Tool[] = [];
 		toolsArray.forEach((tool: Tool) => {
 			const removeHyphen = currentPage.replace(/-/g, ' ');
-			if (tool.title.toLowerCase().includes(removeHyphen)) {
+			if (
+				tool.title.toLowerCase().includes(removeHyphen) &&
+				tool.title.toLowerCase() !== removeHyphen
+			) {
 				tools.push(tool);
 			}
 		});
@@ -34,7 +37,9 @@ class Helpers {
 		return tools;
 	}
 
-	static windowResizeListener(setWindowWidth: Dispatch<SetStateAction<number>>) {
+	static windowResizeListener(
+		setWindowWidth: Dispatch<SetStateAction<number>>
+	) {
 		const handleWindowResize = () => {
 			setWindowWidth(window.innerWidth);
 		};

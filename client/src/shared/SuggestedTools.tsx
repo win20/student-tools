@@ -4,17 +4,36 @@ import { Helpers } from 'utils/helpers';
 import { useEffect, useState } from 'react';
 import RectangleToolCard from './RectangleToolCard';
 import { useParams } from 'react-router-dom';
+import { toolsArray } from 'utils/tools';
 
 const SuggestedTools = () => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 	const { toolid } = useParams();
+	const toolUri = toolid ? toolid : '';
 
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-	const toolsToSuggest: Tool[] = Helpers.getToolsToSuggest(toolid!);
+	const toolsToSuggest: Tool[] = Helpers.getToolsToSuggest(toolUri);
 
 	useEffect(() => {
 		Helpers.windowResizeListener(setWindowWidth);
 	});
+
+	if (toolsToSuggest.length < 5) {
+		const randomList: number[] = [];
+
+		while (toolsToSuggest.length < 4) {
+			const r = Math.floor(Math.random() * toolsArray.length);
+
+			if (!randomList.includes(r)) {
+				randomList.push(r);
+			}
+
+			if (
+				Helpers.urlCleaner(toolsArray[r].title) !== Helpers.urlCleaner(toolUri)
+			) {
+				toolsToSuggest.push(toolsArray[r]);
+			}
+		}
+	}
 
 	const renderSquareTools: JSX.Element[] = toolsToSuggest.map(
 		(tool: Tool, i: number) => (
