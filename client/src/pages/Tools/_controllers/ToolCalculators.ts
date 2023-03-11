@@ -1,15 +1,19 @@
-const Percentage_XIsWhatPercentOfY = (inputs: HTMLInputElement[]): string => {
-	const x: number = parseFloat(inputs[0].value);
-	const y: number = parseFloat(inputs[1].value);
-	const answer: number = (x / y) * 100;
-
+const answerFormatter = (answer: number, suffix = '') => {
 	if (Number.isNaN(answer)) return '';
 
 	const answerString: string = Number.isInteger(answer)
 		? answer.toString()
 		: answer.toFixed(2);
 
-	return answerString + '%';
+	return answerString + suffix;
+};
+
+const Percentage_XIsWhatPercentOfY = (inputs: HTMLInputElement[]): string => {
+	const x: number = parseFloat(inputs[0].value);
+	const y: number = parseFloat(inputs[1].value);
+	const answer: number = (x / y) * 100;
+
+	return answerFormatter(answer, '%');
 };
 
 const Percentage_WhatIsXPercentOfY = (inputs: HTMLInputElement[]): string => {
@@ -17,9 +21,7 @@ const Percentage_WhatIsXPercentOfY = (inputs: HTMLInputElement[]): string => {
 	const y: number = parseFloat(inputs[1].value);
 	const answer: number = (x / 100) * y;
 
-	if (Number.isNaN(answer)) return '';
-
-	return Number.isInteger(answer) ? answer.toString() : answer.toFixed(2);
+	return answerFormatter(answer);
 };
 
 const Percentage_IncreaseOrDecrease = (inputs: HTMLInputElement[]): string => {
@@ -27,13 +29,7 @@ const Percentage_IncreaseOrDecrease = (inputs: HTMLInputElement[]): string => {
 	const y: number = parseFloat(inputs[1].value);
 	const answer: number = ((y - x) / x) * 100;
 
-	if (Number.isNaN(answer)) return '';
-
-	const answerString: string = Number.isInteger(answer)
-		? answer.toString()
-		: answer.toFixed(2);
-
-	return answerString + '%';
+	return answerFormatter(answer, '%');
 };
 
 const FractionToPercentage = (inputs: HTMLInputElement[]): string => {
@@ -41,26 +37,14 @@ const FractionToPercentage = (inputs: HTMLInputElement[]): string => {
 	const y: number = parseFloat(inputs[1].value);
 	const answer = (x / y) * 100;
 
-	if (Number.isNaN(answer)) return '';
-
-	const answerString: string = Number.isInteger(answer)
-		? answer.toString()
-		: answer.toFixed(2);
-
-	return answerString + '%';
+	return answerFormatter(answer, '%');
 };
 
 const AreaOfACircle = (inputs: HTMLInputElement[]): string => {
 	const x: number = parseFloat(inputs[0].value);
 	const answer = Math.PI * Math.pow(x, 2);
 
-	if (Number.isNaN(answer)) return '';
-
-	const answerString: string = Number.isInteger(answer)
-		? answer.toString()
-		: answer.toFixed(2);
-
-	return answerString;
+	return answerFormatter(answer);
 };
 
 /*
@@ -69,9 +53,9 @@ const AreaOfACircle = (inputs: HTMLInputElement[]): string => {
 export const calculatorsMap: {
 	[K: string]: (inputs: HTMLInputElement[]) => string;
 } = {
-	Percentage_XIsWhatPercentOfY: Percentage_XIsWhatPercentOfY,
-	Percentage_WhatIsXPercentOfY: Percentage_WhatIsXPercentOfY,
-	Percentage_IncreaseOrDecrease: Percentage_IncreaseOrDecrease,
-	FractionToPercentage: FractionToPercentage,
-	AreaOfACircle: AreaOfACircle,
+	Percentage_XIsWhatPercentOfY,
+	Percentage_WhatIsXPercentOfY,
+	Percentage_IncreaseOrDecrease,
+	FractionToPercentage,
+	AreaOfACircle,
 };
