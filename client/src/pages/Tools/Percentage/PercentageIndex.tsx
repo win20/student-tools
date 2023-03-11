@@ -9,7 +9,6 @@ const PercentageIndex = () => {
 			</h1>
 
 			<PercentageRender />
-
 			<SuggestedTools />
 		</div>
 	);

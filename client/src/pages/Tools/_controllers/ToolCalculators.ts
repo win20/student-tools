@@ -50,6 +50,19 @@ const FractionToPercentage = (inputs: HTMLInputElement[]): string => {
 	return answerString + '%';
 };
 
+const AreaOfACircle = (inputs: HTMLInputElement[]): string => {
+	const x: number = parseFloat(inputs[0].value);
+	const answer = Math.PI * Math.pow(x, 2);
+
+	if (Number.isNaN(answer)) return '';
+
+	const answerString: string = Number.isInteger(answer)
+		? answer.toString()
+		: answer.toFixed(2);
+
+	return answerString;
+};
+
 /*
 	Add all calculator functions here
 */
@@ -60,4 +73,5 @@ export const calculatorsMap: {
 	Percentage_WhatIsXPercentOfY: Percentage_WhatIsXPercentOfY,
 	Percentage_IncreaseOrDecrease: Percentage_IncreaseOrDecrease,
 	FractionToPercentage: FractionToPercentage,
+	AreaOfACircle: AreaOfACircle,
 };
