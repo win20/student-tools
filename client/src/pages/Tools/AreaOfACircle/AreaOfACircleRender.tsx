@@ -9,7 +9,12 @@ const AreaOfACircleRender = () => {
 				</i>
 
 				<div className="flex mt-2">
-					<input id="xInput1" type="text" className="calculator-input" />
+					<input
+						id="xInput1"
+						type="text"
+						className="calculator-input"
+						placeholder="radius (r)"
+					/>
 					<CalculateButton
 						id="output1"
 						inputs={['xInput1']}

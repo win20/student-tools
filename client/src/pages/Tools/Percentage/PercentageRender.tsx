@@ -7,20 +7,51 @@ const RenderBigScreen = () => {
 		<div id="large-screen-percentage" className="hidden md:flex">
 			<div className="mt-5 flex flex-col">
 				<div className="mb-5">
-					<input id="xInput1" type="text" className="calculator-input" />
+					<input
+						id="xInput1"
+						type="text"
+						className="calculator-input"
+						placeholder="50"
+					/>
 					is what percent of
-					<input id="yInput1" type="text" className="calculator-input ml-2" />
+					<input
+						id="yInput1"
+						type="text"
+						className="calculator-input ml-2"
+						placeholder="100"
+					/>
 				</div>
 				<div className="mb-5">
 					What is{' '}
-					<input id="xInput2" type="text" className="calculator-input" />% of{' '}
-					<input id="yInput2" type="text" className="calculator-input" />
+					<input
+						id="xInput2"
+						type="text"
+						className="calculator-input"
+						placeholder="20"
+					/>
+					% of{' '}
+					<input
+						id="yInput2"
+						type="text"
+						className="calculator-input"
+						placeholder="40"
+					/>
 				</div>
 				<div>
 					Percentage increase/decrease from
-					<input id="xInput3" type="text" className="calculator-input ml-2" />
+					<input
+						id="xInput3"
+						type="text"
+						className="calculator-input ml-2"
+						placeholder="500"
+					/>
 					to
-					<input id="yInput3" type="text" className="calculator-input ml-2" />
+					<input
+						id="yInput3"
+						type="text"
+						className="calculator-input ml-2"
+						placeholder="200"
+					/>
 				</div>
 			</div>
 
