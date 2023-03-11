@@ -47,6 +47,14 @@ const AreaOfACircle = (inputs: HTMLInputElement[]): string => {
 	return answerFormatter(answer);
 };
 
+const Density = (inputs: HTMLInputElement[]): string => {
+	const x: number = parseFloat(inputs[0].value);
+	const y: number = parseFloat(inputs[1].value);
+	const answer = x / y;
+
+	return answerFormatter(answer);
+};
+
 /*
 	Add all calculator functions here
 */
@@ -58,4 +66,5 @@ export const calculatorsMap: {
 	Percentage_IncreaseOrDecrease,
 	FractionToPercentage,
 	AreaOfACircle,
+	Density,
 };
