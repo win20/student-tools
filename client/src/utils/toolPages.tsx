@@ -2,6 +2,7 @@ import PercentageIndex from 'pages/Tools/Percentage/PercentageIndex';
 import FractionToPercentageIndex from 'pages/Tools/FractionToPercentage/FractionToPercentageIndex';
 import AreaOfACircleIndex from 'pages/Tools/AreaOfACircle/AreaOfACircleIndex';
 import DensityIndex from 'pages/Tools/Density/DensityIndex';
+import VelocityIndex from 'pages/Tools/Velocity/VelocityIndex';
 import { toolsArray, Tool } from './tools';
 import { Helpers } from './helpers';
 
@@ -25,6 +26,7 @@ const toolPages: AssociativeArray = {
 	[urlSuffixes[1]]: <FractionToPercentageIndex />,
 	[urlSuffixes[2]]: <AreaOfACircleIndex />,
 	[urlSuffixes[3]]: <DensityIndex />,
+	[urlSuffixes[4]]: <VelocityIndex />,
 };
 
 export default toolPages;

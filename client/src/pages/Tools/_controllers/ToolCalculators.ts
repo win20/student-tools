@@ -55,6 +55,15 @@ const Density = (inputs: HTMLInputElement[]): string => {
 	return answerFormatter(answer);
 };
 
+const Velocity = (inputs: HTMLInputElement[]): string => {
+	const u: number = parseFloat(inputs[0].value);
+	const a: number = parseFloat(inputs[1].value);
+	const t: number = parseFloat(inputs[2].value);
+	const answer = u + a * t;
+
+	return answerFormatter(answer, ' m/s');
+};
+
 /*
 	Add all calculator functions here
 */
@@ -67,4 +76,5 @@ export const calculatorsMap: {
 	FractionToPercentage,
 	AreaOfACircle,
 	Density,
+	Velocity,
 };
