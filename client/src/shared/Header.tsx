@@ -29,7 +29,10 @@ const Header = () => {
 						d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
 					/>
 				</svg>
-				<a href="/" className="hidden md:flex items-center text-desktop">
+				<a
+					href="/"
+					className="hidden md:flex items-center text-desktop transform hover:translate-x-4 transition duration-150 ease-in-out"
+				>
 					University Finder
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
