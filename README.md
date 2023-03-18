@@ -1,1 +1,1 @@
-# StudentTools
+# student-tools
