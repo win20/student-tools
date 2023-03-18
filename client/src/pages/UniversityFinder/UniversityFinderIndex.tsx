@@ -1,13 +1,18 @@
+import { FormEvent } from 'react';
 import Header from 'shared/Header';
 
 const UniversityFinderIndex = () => {
+	const handleSubmit = (event: FormEvent) => {
+		event.preventDefault();
+	};
+
 	return (
 		<>
 			<Header />
 			<div className="md:mt-10 responsive-spacing">
 				<h1 className="text-xl font-semibold md:text-3xl">University Finder</h1>
 
-				<form action="post" className="mt-4">
+				<form action="post" className="mt-4" onSubmit={handleSubmit}>
 					<label htmlFor="ucas-points" className="text-sm">
 						Predicted UCAS tariff points
 						<input
