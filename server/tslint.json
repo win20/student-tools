@@ -4,7 +4,8 @@
 	"jsRules": {},
 	"rules": {
 		"trailing-comma": [true],
-		"quotemark": [true, "single"]
+		"quotemark": [true, "single"],
+		"no-console": [true, "log", "error"]
 	},
 	"rulesDirectory": []
 }
