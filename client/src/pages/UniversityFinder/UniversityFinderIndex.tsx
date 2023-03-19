@@ -1,9 +1,15 @@
-import { FormEvent } from 'react';
+import { FormEvent, SyntheticEvent } from 'react';
 import Header from 'shared/Header';
 
 const UniversityFinderIndex = () => {
-	const handleSubmit = (event: FormEvent) => {
-		event.preventDefault();
+	const handleSubmit = (e: FormEvent) => {
+		e.preventDefault();
+
+		const target = e.target as typeof e.target & {
+			ucasPoints: { value: string };
+		};
+
+		const ucasTariff = target.ucasPoints.value;
 	};
 
 	return (
@@ -16,7 +22,7 @@ const UniversityFinderIndex = () => {
 					<label htmlFor="ucas-points" className="text-sm">
 						Predicted UCAS tariff points
 						<input
-							name="ucas-points"
+							name="ucasPoints"
 							type="text"
 							className="border-1 rounded-md py-1 px-2"
 						/>
