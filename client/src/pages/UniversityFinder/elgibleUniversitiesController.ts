@@ -1,14 +1,10 @@
-type University = {
-	'2023': { S: string };
-	'Average entry tariff': { S: string };
-	Institution: { S: string };
-};
+import UniversityModel from 'models/UniversityModel';
 
 const getNunberOfEligibleUniversities = (
-	universities: Array<University>,
+	universities: Array<UniversityModel>,
 	limit: number,
 	sortDirection = 'descending'
-): Array<University> => {
+): Array<UniversityModel> => {
 	const sortedUniversities = sortUniversities(universities, sortDirection);
 	const listToReturn = [];
 	for (let i = 0; i < limit; i++) {
@@ -21,12 +17,12 @@ const getNunberOfEligibleUniversities = (
 };
 
 const sortUniversities = (
-	universities: Array<University>,
+	universities: Array<UniversityModel>,
 	sortDirection: string
-): Array<University> => {
+): Array<UniversityModel> => {
 	if (sortDirection === 'ascending') {
 		universities.sort(
-			(a: University, b: University) =>
+			(a: UniversityModel, b: UniversityModel) =>
 				Number.parseInt(a['Average entry tariff']['S']) -
 				Number.parseInt(b['Average entry tariff']['S'])
 		);
@@ -34,7 +30,7 @@ const sortUniversities = (
 	}
 
 	universities.sort(
-		(a: University, b: University) =>
+		(a: UniversityModel, b: UniversityModel) =>
 			Number.parseInt(b['Average entry tariff']['S']) -
 			Number.parseInt(a['Average entry tariff']['S'])
 	);

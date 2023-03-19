@@ -1,9 +1,15 @@
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import axios from 'axios';
 import Header from 'shared/Header';
 import getNunberOfEligibleUniversities from './elgibleUniversitiesController';
+import UniversityCard from './UniversityCard';
+import UniversityModel from 'models/UniversityModel';
 
 const UniversityFinderIndex = () => {
+	const [universitiesToDisplay, setUniversitiesToDisplay] = useState<
+		Array<UniversityModel>
+	>([]);
+
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
 
@@ -20,11 +26,16 @@ const UniversityFinderIndex = () => {
 			}
 		);
 
-		const universitiesToDisplay = getNunberOfEligibleUniversities(
-			response.data,
-			5
-		);
+		setUniversitiesToDisplay(getNunberOfEligibleUniversities(response.data, 5));
 	};
+
+	const displayUniversities = universitiesToDisplay.map(
+		(item: UniversityModel) => {
+			return (
+				<UniversityCard university={item} key={item['Institution']['S']} />
+			);
+		}
+	);
 
 	return (
 		<>
@@ -33,12 +44,12 @@ const UniversityFinderIndex = () => {
 				<h1 className="text-xl font-semibold md:text-3xl">University Finder</h1>
 
 				<form action="post" className="mt-4" onSubmit={handleSubmit}>
-					<label htmlFor="ucas-points" className="text-sm">
+					<label htmlFor="ucas-points" className="text-sm desktop:text-base">
 						Predicted UCAS tariff points
 						<input
 							name="ucasPoints"
 							type="text"
-							className="border-1 rounded-md py-1 px-2"
+							className="border-1 rounded-md py-1 px-2 desktop:ml-2"
 						/>
 					</label>
 					<button
@@ -48,6 +59,8 @@ const UniversityFinderIndex = () => {
 						Search
 					</button>
 				</form>
+
+				<div className="mt-20">{displayUniversities}</div>
 			</div>
 		</>
 	);
