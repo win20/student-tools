@@ -1,6 +1,7 @@
 import { FormEvent } from 'react';
 import axios from 'axios';
 import Header from 'shared/Header';
+import getNunberOfEligibleUniversities from './elgibleUniversitiesController';
 
 const UniversityFinderIndex = () => {
 	const handleSubmit = async (e: FormEvent) => {
@@ -18,7 +19,11 @@ const UniversityFinderIndex = () => {
 				params: { ucasTariff },
 			}
 		);
-		console.log(response.data);
+
+		const universitiesToDisplay = getNunberOfEligibleUniversities(
+			response.data,
+			5
+		);
 	};
 
 	return (
