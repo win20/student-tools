@@ -1,8 +1,9 @@
-import { FormEvent, SyntheticEvent } from 'react';
+import { FormEvent } from 'react';
+import axios from 'axios';
 import Header from 'shared/Header';
 
 const UniversityFinderIndex = () => {
-	const handleSubmit = (e: FormEvent) => {
+	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
 
 		const target = e.target as typeof e.target & {
@@ -10,6 +11,14 @@ const UniversityFinderIndex = () => {
 		};
 
 		const ucasTariff = target.ucasPoints.value;
+
+		const response = await axios.get(
+			'http://localhost:8080/get-elligible-universities',
+			{
+				params: { ucasTariff },
+			}
+		);
+		console.log(response.data);
 	};
 
 	return (

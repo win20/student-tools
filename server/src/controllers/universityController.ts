@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import { DynamoDBClient, ScanCommand } from '@aws-sdk/client-dynamodb';
 
 const getEligibleUniversities = async (req: Request, res: Response) => {
+	const ucasTariff = req.query.ucasTariff as string;
+
 	const client = new DynamoDBClient({ region: 'eu-west-2' });
 	const command = new ScanCommand({
 		ExpressionAttributeNames: {
@@ -10,16 +12,16 @@ const getEligibleUniversities = async (req: Request, res: Response) => {
 			'#AET': 'Average entry tariff',
 		},
 		ExpressionAttributeValues: {
-			':filter': { S: '200' },
+			':filter': { S: ucasTariff },
 		},
-		FilterExpression: '#AET > :filter',
+		FilterExpression: '#AET < :filter',
 		ProjectionExpression: '#I, #Date, #AET',
 		TableName: 'university-table',
 	});
 
 	try {
 		const results = await client.send(command);
-		res.json(results.Items);
+		res.send(results.Items);
 	} catch (err) {
 		console.error(err);
 	}
