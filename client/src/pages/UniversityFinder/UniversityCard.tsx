@@ -17,7 +17,15 @@ const UniversityCard = (props: propsType) => {
 				</div>
 			</div>
 			<div>
-				<img src="/icons/right-arrow.png" alt="right arrow" className="w-5" />
+				<a
+					href={props.university['website']['S']}
+					target="_blank"
+					rel="noreferrer"
+					className="tablet:flex"
+				>
+					<span className="hidden tablet:block mr-2">Go to website</span>
+					<img src="/icons/right-arrow.png" alt="right arrow" className="w-5" />
+				</a>
 			</div>
 		</div>
 	);

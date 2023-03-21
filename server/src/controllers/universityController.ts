@@ -10,12 +10,13 @@ const getEligibleUniversities = async (req: Request, res: Response) => {
 			'#I': 'Institution',
 			'#Date': '2023',
 			'#AET': 'Average entry tariff',
+			'#W': 'website',
 		},
 		ExpressionAttributeValues: {
 			':filter': { S: ucasTariff },
 		},
 		FilterExpression: '#AET < :filter',
-		ProjectionExpression: '#I, #Date, #AET',
+		ProjectionExpression: '#I, #Date, #AET, #W',
 		TableName: 'university-table',
 	});
 

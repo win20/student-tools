@@ -25,6 +25,7 @@ const UniversityFinderIndex = () => {
 				params: { ucasTariff },
 			}
 		);
+		console.log(response.data);
 
 		setUniversitiesToDisplay(getNunberOfEligibleUniversities(response.data, 5));
 	};
