@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Header from 'shared/Header';
 import getNunberOfEligibleUniversities from './elgibleUniversitiesController';
@@ -9,6 +9,19 @@ const UniversityFinderIndex = () => {
 	const [universitiesToDisplay, setUniversitiesToDisplay] = useState<
 		Array<UniversityModel>
 	>([]);
+
+	const getDefaultUniversitiesOnLoad = async () => {
+		const response = await axios.get(
+			'http://localhost:8080/get-default-universities'
+		);
+		console.log(response.data);
+
+		setUniversitiesToDisplay(response.data);
+	};
+
+	useEffect(() => {
+		getDefaultUniversitiesOnLoad();
+	}, []);
 
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
