@@ -4,11 +4,13 @@ import Header from 'shared/Header';
 import getNunberOfEligibleUniversities from './elgibleUniversitiesController';
 import UniversityCard from './UniversityCard';
 import UniversityModel from 'models/UniversityModel';
+import UniversitySorting from './UniversitySorting';
 
 const UniversityFinderIndex = () => {
 	const [universitiesToDisplay, setUniversitiesToDisplay] = useState<
 		Array<UniversityModel>
 	>([]);
+	const [isDefaultUni, setIsDefaultUni] = useState<boolean>(true);
 
 	const getDefaultUniversitiesOnLoad = async () => {
 		const response = await axios.get(
@@ -38,9 +40,9 @@ const UniversityFinderIndex = () => {
 				params: { ucasTariff },
 			}
 		);
-		console.log(response.data);
 
 		setUniversitiesToDisplay(getNunberOfEligibleUniversities(response.data, 5));
+		setIsDefaultUni(false);
 	};
 
 	const displayUniversities = universitiesToDisplay.map(
@@ -74,7 +76,16 @@ const UniversityFinderIndex = () => {
 					</button>
 				</form>
 
-				<div className="mt-20">{displayUniversities}</div>
+				<div className="mt-10">
+					{isDefaultUni ? (
+						<h2 className="text-xl mb-2 font-semibold">
+							Suggested Universities
+						</h2>
+					) : (
+						<UniversitySorting />
+					)}
+					<div>{displayUniversities}</div>
+				</div>
 			</div>
 		</>
 	);
