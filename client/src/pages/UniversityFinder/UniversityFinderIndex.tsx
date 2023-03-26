@@ -1,7 +1,10 @@
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Header from 'shared/Header';
-import getNunberOfEligibleUniversities from './elgibleUniversitiesController';
+import {
+	getNunberOfEligibleUniversities,
+	sortUniversities,
+} from './elgibleUniversitiesController';
 import UniversityCard from './UniversityCard';
 import UniversityModel from 'models/UniversityModel';
 import UniversitySorting from './UniversitySorting';
@@ -11,13 +14,13 @@ const UniversityFinderIndex = () => {
 		Array<UniversityModel>
 	>([]);
 	const [isDefaultUni, setIsDefaultUni] = useState<boolean>(true);
+	const [isSearched, setIsSearched] = useState<boolean>(false);
+	const [isSorted, setIsSorted] = useState<boolean>(false);
 
 	const getDefaultUniversitiesOnLoad = async () => {
 		const response = await axios.get(
 			'http://localhost:8080/get-default-universities'
 		);
-		console.log(response.data);
-
 		setUniversitiesToDisplay(response.data);
 	};
 
@@ -43,6 +46,7 @@ const UniversityFinderIndex = () => {
 
 		setUniversitiesToDisplay(getNunberOfEligibleUniversities(response.data, 5));
 		setIsDefaultUni(false);
+		setIsSearched(true);
 	};
 
 	const displayUniversities = universitiesToDisplay.map(
@@ -52,6 +56,28 @@ const UniversityFinderIndex = () => {
 			);
 		}
 	);
+
+	const [universitiesMap, setUniversitiesMap] = useState(displayUniversities);
+
+	const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		console.log(e.target.value);
+
+		setIsSorted(true);
+
+		const sortedUniversities = sortUniversities(
+			universitiesToDisplay,
+			'rank',
+			'ascending'
+		);
+		const updatedUniversities = sortedUniversities.map(
+			(item: UniversityModel) => {
+				return (
+					<UniversityCard university={item} key={item['Institution']['S']} />
+				);
+			}
+		);
+		setUniversitiesMap(updatedUniversities);
+	};
 
 	return (
 		<>
@@ -78,13 +104,20 @@ const UniversityFinderIndex = () => {
 
 				<div className="mt-10">
 					{isDefaultUni ? (
-						<h2 className="text-xl mb-2 font-semibold">
-							Suggested Universities
-						</h2>
+						<>
+							<h2 className="text-xl mb-2 font-semibold">
+								Suggested Universities
+							</h2>
+							<div>{displayUniversities}</div>
+						</>
+					) : isSearched ? (
+						<>
+							<UniversitySorting handleSort={handleSort} />
+							{displayUniversities}
+						</>
 					) : (
-						<UniversitySorting />
+						<div>{universitiesMap}</div>
 					)}
-					<div>{displayUniversities}</div>
 				</div>
 			</div>
 		</>
