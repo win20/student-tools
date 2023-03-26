@@ -4,6 +4,8 @@ import Header from 'shared/Header';
 import {
 	getNunberOfEligibleUniversities,
 	sortUniversities,
+	SortDirections,
+	SortByOptions,
 } from './elgibleUniversitiesController';
 import UniversityCard from './UniversityCard';
 import UniversityModel from 'models/UniversityModel';
@@ -61,13 +63,29 @@ const UniversityFinderIndex = () => {
 
 	const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		console.log(e.target.value);
+		const selectedSortOption: string = e.target.value;
+		let sortBy: SortByOptions = '';
+		let sortDirection: SortDirections = '';
+		if (selectedSortOption === 'tariffHighToLow') {
+			sortBy = 'ucas';
+			sortDirection = 'descending';
+		} else if (selectedSortOption === 'tariffLowToHigh') {
+			sortBy = 'ucas';
+			sortDirection = 'ascending';
+		} else if (selectedSortOption === 'rankHighToLow') {
+			sortBy = 'rank';
+			sortDirection = 'descending';
+		} else {
+			sortBy = 'rank';
+			sortDirection = 'ascending';
+		}
 
 		setIsSorted(true);
 
 		const sortedUniversities = sortUniversities(
 			universitiesToDisplay,
-			'rank',
-			'ascending'
+			sortBy,
+			sortDirection
 		);
 		const updatedUniversities = sortedUniversities.map(
 			(item: UniversityModel) => {

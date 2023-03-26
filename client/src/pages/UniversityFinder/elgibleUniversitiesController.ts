@@ -1,7 +1,7 @@
 import UniversityModel from 'models/UniversityModel';
 
-type SortByOptions = 'ucas' | 'rank';
-type SortDirections = 'ascending' | 'descending';
+export type SortByOptions = 'ucas' | 'rank' | '';
+export type SortDirections = 'ascending' | 'descending' | '';
 
 const getNunberOfEligibleUniversities = (
 	universities: Array<UniversityModel>,
@@ -36,15 +36,15 @@ const sortUniversities = (
 						Number.parseInt(a['Average entry tariff']['S']) -
 						Number.parseInt(b['Average entry tariff']['S'])
 				);
-				return universities;
+			} else {
+				universities.sort(
+					(a: UniversityModel, b: UniversityModel) =>
+						Number.parseInt(b['Average entry tariff']['S']) -
+						Number.parseInt(a['Average entry tariff']['S'])
+				);
 			}
 
-			universities.sort(
-				(a: UniversityModel, b: UniversityModel) =>
-					Number.parseInt(b['Average entry tariff']['S']) -
-					Number.parseInt(a['Average entry tariff']['S'])
-			);
-			return universities;
+			break;
 		}
 
 		case 'rank': {
@@ -53,16 +53,16 @@ const sortUniversities = (
 					(a: UniversityModel, b: UniversityModel) =>
 						Number.parseInt(a['2023']['S']) - Number.parseInt(b['2023']['S'])
 				);
-				return universities;
+			} else {
+				universities.sort(
+					(a: UniversityModel, b: UniversityModel) =>
+						Number.parseInt(b['2023']['S']) - Number.parseInt(a['2023']['S'])
+				);
 			}
-
-			universities.sort(
-				(a: UniversityModel, b: UniversityModel) =>
-					Number.parseInt(b['2023']['S']) - Number.parseInt(a['2023']['S'])
-			);
-			return universities;
+			break;
 		}
 	}
+	return universities;
 };
 
 export default getNunberOfEligibleUniversities;

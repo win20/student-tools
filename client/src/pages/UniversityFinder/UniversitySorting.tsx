@@ -1,5 +1,4 @@
 import { ChangeEvent } from 'react';
-
 type propsType = {
 	handleSort: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
@@ -21,7 +20,7 @@ const UniversitySorting = (props: propsType) => {
 				<option value="tariffHighToLow">UCAS tariff (high - low)</option>
 				<option value="tariffLowToHigh">UCAS tariff (low - high)</option>
 				<option value="rankHighToLow">Rank (high - low)</option>
-				<option value="highToLow">Rank (low - high)</option>
+				<option value="rankLowToHigh">Rank (low - high)</option>
 			</select>
 		</div>
 	);
