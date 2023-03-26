@@ -49,7 +49,6 @@ export const getDefaultUniversities = async (req: Request, res: Response) => {
 
 	try {
 		const results = await client.send(command);
-		console.log(results.Items);
 		res.send(results.Items);
 	} catch (err) {
 		console.error(err);
