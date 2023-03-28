@@ -3,9 +3,7 @@ type propsType = {
 	handleSort: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 const UniversitySorting = (props: propsType) => {
-	const handleDropdownChange = (
-		event: React.ChangeEvent<HTMLSelectElement>
-	) => {
+	const handleDropdownChange = (event: ChangeEvent<HTMLSelectElement>) => {
 		props.handleSort(event);
 	};
 	return (

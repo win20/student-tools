@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useRef, useState } from 'react';
+import { FormEvent, useCallback, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Header from 'shared/Header';
 import {
@@ -16,9 +16,11 @@ const UniversityFinderIndex = () => {
 		Array<UniversityModel>
 	>([]);
 	const [isDefaultUni, setIsDefaultUni] = useState<boolean>(true);
-	const [isSearched, setIsSearched] = useState<boolean>(false);
-	const [isSorted, setIsSorted] = useState<boolean>(false);
 
+	function useForceUpdate() {
+		const [value, setValue] = useState(0);
+		return () => setValue((value) => value + 1);
+	}
 	const getDefaultUniversitiesOnLoad = async () => {
 		const response = await axios.get(
 			'http://localhost:8080/get-default-universities'
@@ -48,7 +50,6 @@ const UniversityFinderIndex = () => {
 
 		setUniversitiesToDisplay(getNunberOfEligibleUniversities(response.data, 5));
 		setIsDefaultUni(false);
-		setIsSearched(true);
 	};
 
 	const displayUniversities = universitiesToDisplay.map(
@@ -59,10 +60,9 @@ const UniversityFinderIndex = () => {
 		}
 	);
 
-	const [universitiesMap, setUniversitiesMap] = useState(displayUniversities);
+	const forceUpdate = useForceUpdate();
 
 	const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		console.log(e.target.value);
 		const selectedSortOption: string = e.target.value;
 		let sortBy: SortByOptions = '';
 		let sortDirection: SortDirections = '';
@@ -80,23 +80,35 @@ const UniversityFinderIndex = () => {
 			sortDirection = 'ascending';
 		}
 
-		setIsSorted(true);
-
+		//setIsSorted(true);
 		const sortedUniversities = sortUniversities(
 			universitiesToDisplay,
 			sortBy,
 			sortDirection
 		);
-		const updatedUniversities = sortedUniversities.map(
-			(item: UniversityModel) => {
-				return (
-					<UniversityCard university={item} key={item['Institution']['S']} />
-				);
-			}
-		);
-		setUniversitiesMap(updatedUniversities);
+
+		setUniversitiesToDisplay(sortedUniversities);
+
+		forceUpdate();
 	};
 
+	const handleAmountToDisplay = async (
+		e: React.ChangeEvent<HTMLSelectElement>
+	) => {
+		const ucasTariff = document.querySelector('input')?.value;
+
+		const amountToDisplay = parseInt(e.target.value);
+
+		const response = await axios.get(
+			'http://localhost:8080/get-elligible-universities',
+			{
+				params: { ucasTariff },
+			}
+		);
+		setUniversitiesToDisplay(
+			getNunberOfEligibleUniversities(response.data, amountToDisplay)
+		);
+	};
 	return (
 		<>
 			<Header />
@@ -128,18 +140,32 @@ const UniversityFinderIndex = () => {
 							</h2>
 							<div>{displayUniversities}</div>
 						</>
-					) : isSearched ? (
+					) : (
 						<>
-							<UniversitySorting handleSort={handleSort} />
+							<div className="flex">
+								<UniversitySorting
+									handleSort={(e) => {
+										handleSort(e);
+									}}
+								/>
+								<select
+									name="amountToDisplay"
+									id="sortingOptions"
+									className="p-2 rounded-md mb-2 ml-2 hover:cursor-pointer"
+									onChange={handleAmountToDisplay}
+								>
+									<option value="Sort">How many to display?</option>
+									<option value="5">5</option>
+									<option value="10">10</option>
+									<option value="15">15</option>
+								</select>
+							</div>
 							{displayUniversities}
 						</>
-					) : (
-						<div>{universitiesMap}</div>
 					)}
 				</div>
 			</div>
 		</>
 	);
 };
-
 export default UniversityFinderIndex;
