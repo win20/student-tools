@@ -1,11 +1,12 @@
 import { ChangeEvent } from 'react';
 type propsType = {
-	handleSort: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+	handleSort: (event: ChangeEvent<HTMLSelectElement>) => void;
 };
 const UniversitySorting = (props: propsType) => {
 	const handleDropdownChange = (event: ChangeEvent<HTMLSelectElement>) => {
 		props.handleSort(event);
 	};
+
 	return (
 		<div>
 			<select

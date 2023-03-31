@@ -1,4 +1,11 @@
-import { FormEvent, useCallback, useEffect, useRef, useState } from 'react';
+import {
+	ChangeEvent,
+	FormEvent,
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import axios from 'axios';
 import Header from 'shared/Header';
 import {
@@ -10,6 +17,7 @@ import {
 import UniversityCard from './UniversityCard';
 import UniversityModel from 'models/UniversityModel';
 import UniversitySorting from './UniversitySorting';
+import AmountToDisplayDropdown from './AmountToDisplayDropdown';
 
 const UniversityFinderIndex = () => {
 	const [universitiesToDisplay, setUniversitiesToDisplay] = useState<
@@ -92,9 +100,8 @@ const UniversityFinderIndex = () => {
 		forceUpdate();
 	};
 
-	const handleAmountToDisplay = async (
-		e: React.ChangeEvent<HTMLSelectElement>
-	) => {
+	const handleAmountToDisplay = async (e: ChangeEvent<HTMLSelectElement>) => {
+		console.log(e.target.value);
 		const ucasTariff = document.querySelector('input')?.value;
 
 		const amountToDisplay = parseInt(e.target.value);
@@ -148,17 +155,11 @@ const UniversityFinderIndex = () => {
 										handleSort(e);
 									}}
 								/>
-								<select
-									name="amountToDisplay"
-									id="sortingOptions"
-									className="p-2 rounded-md mb-2 ml-2 hover:cursor-pointer"
-									onChange={handleAmountToDisplay}
-								>
-									<option value="Sort">How many to display?</option>
-									<option value="5">5</option>
-									<option value="10">10</option>
-									<option value="15">15</option>
-								</select>
+								<AmountToDisplayDropdown
+									handleAmountToDisplay={(e) => {
+										handleAmountToDisplay(e);
+									}}
+								/>
 							</div>
 							{displayUniversities}
 						</>
