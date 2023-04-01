@@ -51,12 +51,12 @@ const sortUniversities = (
 			if (sortDirection === 'ascending') {
 				universities.sort(
 					(a: UniversityModel, b: UniversityModel) =>
-						Number.parseInt(b['2023']['S']) - Number.parseInt(a['2023']['S'])
+						Number.parseInt(a['2023']['S']) - Number.parseInt(b['2023']['S'])
 				);
 			} else {
 				universities.sort(
 					(a: UniversityModel, b: UniversityModel) =>
-						Number.parseInt(a['2023']['S']) - Number.parseInt(b['2023']['S'])
+						Number.parseInt(b['2023']['S']) - Number.parseInt(a['2023']['S'])
 				);
 			}
 			break;
