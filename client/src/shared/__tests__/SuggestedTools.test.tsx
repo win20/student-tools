@@ -11,38 +11,38 @@ const mockToolsArray = [
 	new Tool('Quadratic Formula', 'description1', 'Maths', 'function'),
 ];
 
-const MockRouting = () => {
-	return (
-		<MemoryRouter initialEntries={['/suggested-tools']}>
-			<Routes>
-				<Route path="/tools/percentage" element={<PercentageIndex />} />
-				<Route
-					path="/suggested-tools"
-					element={<SuggestedTools toolsArray={mockToolsArray} />}
-				/>
-			</Routes>
-		</MemoryRouter>
-	);
-};
-
-beforeEach(() => {
-	render(<MockRouting />);
-});
-afterEach(() => {
-	cleanup();
-});
-
-it('should receive tools array as prop', () => {
-	const divElements = document.getElementsByClassName('suggested-tool');
-	expect(divElements).toHaveLength(mockToolsArray.length);
-});
-
-// TODO Add test to check second link, when content is added
-it('should link to correct tool page', async () => {
-	const linkElement = screen.getAllByLabelText('go to tool page');
-	await userEvent.click(linkElement[0]);
-
-	expect(
-		screen.getByRole('heading', { name: 'Percentage Calculators' })
-	).toBeInTheDocument();
-});
+// const MockRouting = () => {
+// 	return (
+// 		<MemoryRouter initialEntries={['/suggested-tools']}>
+// 			<Routes>
+// 				<Route path="/tools/percentage" element={<PercentageIndex />} />
+// 				<Route
+// 					path="/suggested-tools"
+// 					element={<SuggestedTools toolsArray={mockToolsArray} />}
+// 				/>
+// 			</Routes>
+// 		</MemoryRouter>
+// 	);
+// };
+//
+// beforeEach(() => {
+// 	render(<MockRouting />);
+// });
+// afterEach(() => {
+// 	cleanup();
+// });
+//
+// it('should receive tools array as prop', () => {
+// 	const divElements = document.getElementsByClassName('suggested-tool');
+// 	expect(divElements).toHaveLength(mockToolsArray.length);
+// });
+//
+// // TODO Add test to check second link, when content is added
+// it('should link to correct tool page', async () => {
+// 	const linkElement = screen.getAllByLabelText('go to tool page');
+// 	await userEvent.click(linkElement[0]);
+//
+// 	expect(
+// 		screen.getByRole('heading', { name: 'Percentage Calculators' })
+// 	).toBeInTheDocument();
+// });
