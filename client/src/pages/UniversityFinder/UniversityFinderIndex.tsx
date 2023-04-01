@@ -1,11 +1,4 @@
-import {
-	ChangeEvent,
-	FormEvent,
-	useCallback,
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import axios from 'axios';
 import Header from 'shared/Header';
 import {
@@ -31,7 +24,7 @@ const UniversityFinderIndex = () => {
 	}
 	const getDefaultUniversitiesOnLoad = async () => {
 		const response = await axios.get(
-			'http://localhost:8080/get-default-universities'
+			import.meta.env.VITE_API_ENDPOINT + 'getDefaultUniversities'
 		);
 		setUniversitiesToDisplay(response.data);
 	};
@@ -50,7 +43,7 @@ const UniversityFinderIndex = () => {
 		const ucasTariff = target.ucasPoints.value;
 
 		const response = await axios.get(
-			'http://localhost:8080/get-elligible-universities',
+			import.meta.env.VITE_API_ENDPOINT + 'getUniversitiesByUcasTariff',
 			{
 				params: { ucasTariff },
 			}
@@ -88,7 +81,6 @@ const UniversityFinderIndex = () => {
 			sortDirection = 'ascending';
 		}
 
-		//setIsSorted(true);
 		const sortedUniversities = sortUniversities(
 			universitiesToDisplay,
 			sortBy,
@@ -107,7 +99,7 @@ const UniversityFinderIndex = () => {
 		const amountToDisplay = parseInt(e.target.value);
 
 		const response = await axios.get(
-			'http://localhost:8080/get-elligible-universities',
+			import.meta.env.VITE_API_ENDPOINT + 'getUniversitiesByUcasTariff',
 			{
 				params: { ucasTariff },
 			}
