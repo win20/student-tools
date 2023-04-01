@@ -1,4 +1,5 @@
 import express, { Express, Request, Response } from 'express';
+import serverless from 'serverless-http';
 const app: Express = express();
 const port = 8080; // default port to listen
 
@@ -16,16 +17,15 @@ app.use((req, res, next) => {
 	next();
 });
 
-// define a route handler for the default home page
-app.get('/', (req: Request, res: Response) => {
-	res.send('Hello world');
-});
-
 app.get('/get-elligible-universities', getEligibleUniversities);
 
 app.get('/get-default-universities', getDefaultUniversities);
+let env = 'dev';
 
-// start the Express server
-app.listen(port, () => {
-	console.log(`server started at http://localhost:${port}`);
-});
+if (env === 'prod') {
+	exports.handler = serverless(app);
+} else if (env === 'dev') {
+	app.listen(port, () => {
+		console.log(`server started at http://localhost:${port}`);
+	});
+}
