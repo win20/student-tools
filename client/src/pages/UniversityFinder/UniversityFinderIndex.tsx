@@ -17,6 +17,7 @@ const UniversityFinderIndex = () => {
 		Array<UniversityModel>
 	>([]);
 	const [isDefaultUni, setIsDefaultUni] = useState<boolean>(true);
+	const [numberOfUniversities, setNumberOfUniversities] = useState<number>(0);
 
 	function useForceUpdate() {
 		const [value, setValue] = useState(0);
@@ -48,8 +49,8 @@ const UniversityFinderIndex = () => {
 				params: { ucasTariff },
 			}
 		);
-
 		setUniversitiesToDisplay(getNunberOfEligibleUniversities(response.data, 5));
+		setNumberOfUniversities(response.data.length);
 		setIsDefaultUni(false);
 	};
 
@@ -141,7 +142,7 @@ const UniversityFinderIndex = () => {
 						</>
 					) : (
 						<>
-							<div className="flex">
+							<div className="flex items-baseline">
 								<UniversitySorting
 									handleSort={(e) => {
 										handleSort(e);
@@ -152,6 +153,9 @@ const UniversityFinderIndex = () => {
 										handleAmountToDisplay(e);
 									}}
 								/>
+								<span className="ml-2">
+									{numberOfUniversities} universities found
+								</span>
 							</div>
 							{displayUniversities}
 						</>
