@@ -20,6 +20,7 @@ module.exports = {
 				tablet: '640px',
 				laptop: '1024px',
 				desktop: '1280px',
+				filterPillsBreakpoint: '1540px',
 			},
 			keyframes: {
 				shake: {

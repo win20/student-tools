@@ -18,7 +18,7 @@ const Home = () => {
 					Calculators and Formulas
 				</h2>
 
-				<div className="md:flex justify-between mb-2">
+				<div className="md:block filterPillsBreakpoint:flex justify-between mb-2">
 					<SearchBar setSearchQuery={setSearchQuery} />
 					<FilterPill filters={filters} />
 				</div>

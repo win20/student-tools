@@ -58,7 +58,7 @@ const FilterPill = (props: propsType) => {
 			<button
 				key={i}
 				id={Helpers.stripAllSpaces(filter)}
-				className="mr-2 my-1 bg-secondary px-4 py-1 rounded-full hover:bg-secondaryHighlight"
+				className="mt-2 filterPillsBreakpoint:mt-0 mr-2 my-1 bg-secondary px-4 py-1 rounded-full hover:bg-secondaryHighlight"
 				onClick={() => setFilter(filter)}
 			>
 				<p className="text-lightText">{filter}</p>

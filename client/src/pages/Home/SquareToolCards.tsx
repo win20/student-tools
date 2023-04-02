@@ -19,7 +19,10 @@ const SquareToolCards = (props: propsType) => {
 	const renderTools: JSX.Element[] = filteredTools.map(
 		(tool: Tool, i: number) => (
 			<div key={i} data-testid="square-tool-cards" aria-label="go to tool page">
-					<SquareToolCard tool={tool} linkPath={`/tools/${Helpers.urlCleaner(tool.title)}`} />
+				<SquareToolCard
+					tool={tool}
+					linkPath={`/tools/${Helpers.urlCleaner(tool.title)}`}
+				/>
 			</div>
 		)
 	);

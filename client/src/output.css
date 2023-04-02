@@ -917,10 +917,6 @@ video {
   text-align: center;
 }
 
-.align-middle{
-  vertical-align: middle;
-}
-
 .font-nunito{
   font-family: nunito, sans-serif;
 }
@@ -1132,6 +1128,10 @@ video {
     margin-left: 2.5rem;
   }
 
+  .md\:mt-1{
+    margin-top: 0.25rem;
+  }
+
   .md\:block{
     display: block;
   }
@@ -1249,5 +1249,15 @@ video {
   .desktop\:text-base{
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+}
+
+@media (min-width: 1540px){
+  .filterPillsBreakpoint\:mt-0{
+    margin-top: 0px;
+  }
+
+  .filterPillsBreakpoint\:flex{
+    display: flex;
   }
 }
