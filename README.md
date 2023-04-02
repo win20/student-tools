@@ -16,9 +16,10 @@ Currently only the first 5 calculators are implemented so will need to add the r
 
 ## Built With
 #### Frontend:
+- Vite
 - React
 - Typescript
-- Vite
+- TailwindCSS
 - Hosted on Vercel
 
 #### Backend:
