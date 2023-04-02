@@ -25,3 +25,4 @@ Currently only the first 5 calculators are implemented so will need to add the r
 - NodeJs
 - Express
 - Hosted on AWS using Serverless Framework
+- Uses data stored in AWS DynamoDB, which is initially scraped using my [other project](https://github.com/win20/university-scraper)
