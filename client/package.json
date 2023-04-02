@@ -1,5 +1,4 @@
 {
-	"name": "client",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
@@ -17,7 +16,8 @@
 		"typescript": "^4.9.4",
 		"web-vitals": "^2.1.4"
 	},
-	"homepage": "https://win20.github.io/student-tools",
+	"homepage": "https://win20.github.io/",
+	"name": "student-tools",
 	"scripts": {
 		"start": "vite",
 		"build": "tsc && vite build",
